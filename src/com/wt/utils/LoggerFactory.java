@@ -26,7 +26,7 @@ public class LoggerFactory {
 		//output to console
 		ConsoleAppender appender2 = null;
 		try {
-			 appender1 = new FileAppender(new TTCCLayout(), "mailclient.log");
+			 appender1 = new FileAppender(new TTCCLayout(), "logs/mailclient.log");
 			 appender2 = new ConsoleAppender(new TTCCLayout());
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 
 import org.apache.log4j.Logger;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+import org.apache.commons.codec.binary.Base64;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
 
@@ -60,8 +60,8 @@ public class SMTPClient {
 	}
 	
 	private void setServerInfo() {
-		int pos = this.message.getFrom().indexOf("@");
-		server = this.message.getFrom().substring(pos + 1);
+		int pos = this.message.getTo().indexOf("@");
+		server = this.message.getTo().substring(pos + 1);
 		if ("yahoo.com".equals(server) || "gmail.com".equals(server))
 		{
 			port = 465;
@@ -69,6 +69,10 @@ public class SMTPClient {
 		else
 			port = 25;
 		server = "smtp." + server;
+
+		server = "127.0.0.1";
+		port = 465;
+
 		logger.debug("server: " + server + "\tport: " + String.valueOf(port));
 	}
 	
@@ -123,6 +127,7 @@ public class SMTPClient {
 		output = new PrintWriter(socket.getOutputStream(), true);
 		
 		int token = getResultToken();
+
 		if (token != 220)
 		{
 			throw new Exception("Connected " + server + " fail");
@@ -153,11 +158,13 @@ public class SMTPClient {
 		if (token != 334)
 			throw new Exception("login fail");
 		
-		token = this.sendData(Base64.encode(this.message.getUser().getUsername().getBytes()));
+		token = this.sendData(Base64.encodeBase64String(this.message.getUser().
+			getUsername().getBytes()));
 		if (token != 334)
 			throw new Exception("login fail");
 		
-		token = this.sendData(Base64.encode(this.message.getUser().getPassword().getBytes()));
+		token = this.sendData(Base64.encodeBase64String(this.message.getUser().
+			getPassword().getBytes()));
 		if (token != 235)
 			throw new Exception("login fail");
 		
