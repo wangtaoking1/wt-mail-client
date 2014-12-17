@@ -12,9 +12,9 @@ public class MailClient {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		MailMessage message = new MailMessage(new User("wangtaoking1",
+		MailMessage message = new MailMessage(new User("xyz",
             "asdfa"));
-        message.setFrom("wangtaoking1@localhost");
+        message.setFrom("xyz@localhost");
         message.setTo("abc@localhost");
         message.setSubject("hello");
         message.setContent("hello world");

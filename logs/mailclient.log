@@ -1,0 +1,541 @@
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+46 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+50 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+51 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - 220 ok
+59 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: register the server fail
+59 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from wangtaoking1@localhost to abc@localhost
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+50 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+54 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+55 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+70 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+71 [main] INFO com.wt.smtp.SMTPClient - register the server successfully
+71 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+95 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+135 [main] DEBUG com.wt.smtp.SMTPClient - Send 'd2FuZ3Rhb2tpbmcx' to the server successfully
+135 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@2f04995e
+136 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+137 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+137 [main] INFO com.wt.smtp.SMTPClient - login successfully
+138 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<wangtaoking1@localhost>' to the server successfully
+139 [main] DEBUG com.wt.smtp.SMTPClient - 553 You are not authorized to send mail, authentication is required
+139 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+139 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from wangtaoking1@localhost to abc@localhost
+6 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+8 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+8 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+45 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+46 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+49 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+57 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+58 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+91 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+130 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+130 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@2f04995e
+132 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+132 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+133 [main] INFO com.wt.smtp.SMTPClient - login successfully
+141 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+141 [main] DEBUG com.wt.smtp.SMTPClient - 553 You are not authorized to send mail, authentication is required
+142 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+142 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+7 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+44 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+45 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+46 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+59 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+60 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+60 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+85 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+115 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+115 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+118 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+122 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+123 [main] INFO com.wt.smtp.SMTPClient - login successfully
+126 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+126 [main] DEBUG com.wt.smtp.SMTPClient - 220 ok
+127 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+129 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+6 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+9 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+10 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+47 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+48 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+48 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+61 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+61 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+62 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+104 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+126 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+126 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+127 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+128 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+128 [main] INFO com.wt.smtp.SMTPClient - login successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+137 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+146 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+147 [main] DEBUG com.wt.smtp.SMTPClient - 501 Invalid argument
+147 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+152 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+41 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+44 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+47 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+59 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+60 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+60 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+91 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+124 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+124 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+125 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+126 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+126 [main] INFO com.wt.smtp.SMTPClient - login successfully
+128 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+128 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+129 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+130 [main] DEBUG com.wt.smtp.SMTPClient - 501 Invalid argument
+130 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+131 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+6 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+7 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+7 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+42 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+45 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+45 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+57 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+58 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+96 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+127 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+128 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+129 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+129 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+129 [main] INFO com.wt.smtp.SMTPClient - login successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+137 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+138 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+139 [main] DEBUG com.wt.smtp.SMTPClient - 501 Invalid argument
+139 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+145 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+31 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+39 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+39 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+56 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+56 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+57 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+86 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+126 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+127 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+131 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+138 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+139 [main] INFO com.wt.smtp.SMTPClient - login successfully
+141 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+141 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+152 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+153 [main] DEBUG com.wt.smtp.SMTPClient - 501 Invalid argument
+153 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+153 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+7 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+10 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+10 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+48 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+48 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+53 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+59 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+59 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+59 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+89 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+128 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+128 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+129 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+130 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+130 [main] INFO com.wt.smtp.SMTPClient - login successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+132 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+140 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+140 [main] DEBUG com.wt.smtp.SMTPClient - 501 Invalid argument
+142 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+148 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+7 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+9 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+9 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+44 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+45 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+46 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+54 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+54 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+54 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+84 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+112 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+113 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@3ef827e3
+119 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+119 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+120 [main] INFO com.wt.smtp.SMTPClient - login successfully
+121 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+122 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+124 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+124 [main] DEBUG com.wt.smtp.SMTPClient - 501 Invalid argument
+124 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+124 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+8 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+10 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+11 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+50 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+50 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+50 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+61 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+62 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+62 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+98 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+134 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+134 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+135 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+136 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+143 [main] INFO com.wt.smtp.SMTPClient - login successfully
+152 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+152 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+154 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+154 [main] DEBUG com.wt.smtp.SMTPClient - 501 Invalid argument
+154 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: set envelop fail
+154 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+7 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+32 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+32 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+33 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+56 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+57 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+57 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+85 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+105 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+106 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+114 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+115 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+116 [main] INFO com.wt.smtp.SMTPClient - login successfully
+117 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+118 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+120 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+120 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+120 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+121 [main] DEBUG com.wt.smtp.SMTPClient - Send 'data' to the server successfully
+121 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+122 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+125 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+125 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+125 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+126 [main] DEBUG com.wt.smtp.SMTPClient - 500 Invalid command
+126 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: quit fail
+126 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+41 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+42 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+42 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+57 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+58 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+92 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+129 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+129 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+131 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+131 [main] INFO com.wt.smtp.SMTPClient - login successfully
+133 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+134 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+134 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+135 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+136 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+136 [main] DEBUG com.wt.smtp.SMTPClient - Send 'data' to the server successfully
+137 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+137 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+138 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+138 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+139 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+143 [main] DEBUG com.wt.smtp.SMTPClient - 500 Invalid command
+144 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: quit fail
+144 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+42 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+44 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+44 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+62 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+62 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+62 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+96 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+130 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@68d6f200
+132 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+132 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+132 [main] INFO com.wt.smtp.SMTPClient - login successfully
+142 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+142 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+143 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+143 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+143 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+147 [main] DEBUG com.wt.smtp.SMTPClient - Send 'data' to the server successfully
+147 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+147 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+148 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+148 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+149 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+149 [main] DEBUG com.wt.smtp.SMTPClient - 500 Invalid command
+149 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: quit fail
+160 [main] INFO com.wt.smtp.SMTPClient - Fail to send the message from xyz@localhost to abc@localhost
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+44 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+44 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+50 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+55 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+55 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+56 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+95 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+131 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@2f04995e
+133 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+133 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+133 [main] INFO com.wt.smtp.SMTPClient - login successfully
+135 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+135 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+136 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+136 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+136 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+137 [main] DEBUG com.wt.smtp.SMTPClient - Send 'data' to the server successfully
+137 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+137 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+138 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+138 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+139 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+139 [main] DEBUG com.wt.smtp.SMTPClient - 500 Invalid command
+139 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: quit fail
+6 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+7 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+8 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+28 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+28 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+29 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+29 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+29 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+30 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+30 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+65 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+66 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@181a115d
+66 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+66 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+67 [main] INFO com.wt.smtp.SMTPClient - login successfully
+67 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+68 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+68 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+68 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+69 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+69 [main] DEBUG com.wt.smtp.SMTPClient - Send 'Data' to the server successfully
+70 [main] DEBUG com.wt.smtp.SMTPClient - 500 Invalid command
+70 [main] ERROR com.wt.smtp.SMTPClient - java.lang.Exception: send 'data' command fail
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+41 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+42 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+44 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+57 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+57 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+95 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+129 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+129 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@68d6f200
+130 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+131 [main] INFO com.wt.smtp.SMTPClient - login successfully
+133 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+133 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+141 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+141 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+142 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+146 [main] DEBUG com.wt.smtp.SMTPClient - Send 'Data' to the server successfully
+146 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+146 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+147 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+147 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+147 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+149 [main] DEBUG com.wt.smtp.SMTPClient - 221 Bye
+153 [main] DEBUG com.wt.smtp.SMTPClient - 221
+153 [main] INFO com.wt.smtp.SMTPClient - quit successfully
+158 [main] INFO com.wt.smtp.SMTPClient - Send the message from xyz@localhost to abc@localhost successfully
+5 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+7 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+7 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+48 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+48 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+49 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+59 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+59 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+99 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+129 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+129 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@77aa13c5
+130 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+131 [main] INFO com.wt.smtp.SMTPClient - login successfully
+133 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+134 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+135 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+142 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+142 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+143 [main] DEBUG com.wt.smtp.SMTPClient - Send 'Data' to the server successfully
+143 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+144 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+144 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+144 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+148 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+149 [main] DEBUG com.wt.smtp.SMTPClient - 221 Bye
+160 [main] DEBUG com.wt.smtp.SMTPClient - 221
+161 [main] INFO com.wt.smtp.SMTPClient - quit successfully
+162 [main] INFO com.wt.smtp.SMTPClient - Send the message from xyz@localhost to abc@localhost successfully
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+22 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+22 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+22 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+22 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+23 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+23 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+27 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+63 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+63 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@181a115d
+63 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+64 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+64 [main] INFO com.wt.smtp.SMTPClient - login successfully
+65 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+65 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+66 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+70 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+71 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+71 [main] DEBUG com.wt.smtp.SMTPClient - Send 'Data' to the server successfully
+72 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+72 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+73 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+73 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+85 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+86 [main] DEBUG com.wt.smtp.SMTPClient - 221 Bye
+86 [main] DEBUG com.wt.smtp.SMTPClient - 221
+87 [main] INFO com.wt.smtp.SMTPClient - quit successfully
+87 [main] INFO com.wt.smtp.SMTPClient - Send the message from xyz@localhost to abc@localhost successfully
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+40 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+42 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+42 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+56 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+57 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+57 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+94 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+126 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+127 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@56f1026f
+128 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+128 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+128 [main] INFO com.wt.smtp.SMTPClient - login successfully
+130 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+131 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+153 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+154 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+154 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+155 [main] DEBUG com.wt.smtp.SMTPClient - Send 'Data' to the server successfully
+155 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+156 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+156 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+157 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+159 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+159 [main] DEBUG com.wt.smtp.SMTPClient - 221 Bye
+159 [main] DEBUG com.wt.smtp.SMTPClient - 221
+161 [main] INFO com.wt.smtp.SMTPClient - quit successfully
+161 [main] INFO com.wt.smtp.SMTPClient - Send the message from xyz@localhost to abc@localhost successfully
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+7 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+7 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+44 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+45 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+45 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+58 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+58 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+100 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+122 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+122 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@77aa13c5
+129 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+129 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+130 [main] INFO com.wt.smtp.SMTPClient - login successfully
+132 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+132 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+136 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+136 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+136 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+142 [main] DEBUG com.wt.smtp.SMTPClient - Send 'Data' to the server successfully
+143 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+144 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+144 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+149 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+151 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+152 [main] DEBUG com.wt.smtp.SMTPClient - 221 Bye
+152 [main] DEBUG com.wt.smtp.SMTPClient - 221
+152 [main] INFO com.wt.smtp.SMTPClient - quit successfully
+152 [main] INFO com.wt.smtp.SMTPClient - Send the message from xyz@localhost to abc@localhost successfully
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: localhost	port: 465
+6 [main] INFO com.wt.smtp.SMTPClient - Connecting localhost ...
+25 [main] DEBUG com.wt.smtp.SMTPClient - 220 localhost
+25 [main] INFO com.wt.smtp.SMTPClient - Connected localhost successfully
+25 [main] DEBUG com.wt.smtp.SMTPClient - Send 'HELO localhost' to the server successfully
+49 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+50 [main] INFO com.wt.smtp.SMTPClient - say helo to the server successfully
+50 [main] DEBUG com.wt.smtp.SMTPClient - Send 'AUTH LOGIN' to the server successfully
+82 [main] DEBUG com.wt.smtp.SMTPClient - 334 dXNlcm5hbWU=
+112 [main] DEBUG com.wt.smtp.SMTPClient - Send 'eHl6' to the server successfully
+112 [main] DEBUG com.wt.smtp.SMTPClient - 334 [B@77aa13c5
+114 [main] DEBUG com.wt.smtp.SMTPClient - Send 'YXNkZmE=' to the server successfully
+114 [main] DEBUG com.wt.smtp.SMTPClient - 235 OK, go ahead
+114 [main] INFO com.wt.smtp.SMTPClient - login successfully
+116 [main] DEBUG com.wt.smtp.SMTPClient - Send 'MAIL From:<xyz@localhost>' to the server successfully
+117 [main] DEBUG com.wt.smtp.SMTPClient - 250 Mail OK
+118 [main] DEBUG com.wt.smtp.SMTPClient - Send 'RCPT To:<abc@localhost>' to the server successfully
+118 [main] DEBUG com.wt.smtp.SMTPClient - 250 Rcpt OK
+118 [main] INFO com.wt.smtp.SMTPClient - set envelop successfully
+119 [main] DEBUG com.wt.smtp.SMTPClient - Send 'Data' to the server successfully
+119 [main] DEBUG com.wt.smtp.SMTPClient - 354 End data with <CR><LF>.<CR><LF>
+120 [main] DEBUG com.wt.smtp.SMTPClient - Send 'hello world
+.' to the server successfully
+120 [main] DEBUG com.wt.smtp.SMTPClient - 250 ok
+120 [main] INFO com.wt.smtp.SMTPClient - send the message successfully
+122 [main] DEBUG com.wt.smtp.SMTPClient - Send 'QUIT' to the server successfully
+122 [main] DEBUG com.wt.smtp.SMTPClient - 221 Bye
+122 [main] DEBUG com.wt.smtp.SMTPClient - 221
+122 [main] INFO com.wt.smtp.SMTPClient - quit successfully
+123 [main] INFO com.wt.smtp.SMTPClient - Send the message from xyz@localhost to abc@localhost successfully
