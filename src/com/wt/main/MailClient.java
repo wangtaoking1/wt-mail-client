@@ -14,8 +14,8 @@ public class MailClient {
 		// TODO Auto-generated method stub
 		MailMessage message = new MailMessage(new User("xyz",
             "asdfa"));
-        message.setFrom("xyz@localhost");
-        message.setTo("abc@localhost");
+        message.setFrom("xyz@10.0.2.4");
+        message.setTo("abc@10.0.2.5");
         message.setSubject("hello");
         message.setContent("hello world");
         SMTPClient client = new SMTPClient(message);

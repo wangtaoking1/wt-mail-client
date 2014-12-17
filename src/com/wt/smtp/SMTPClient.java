@@ -60,8 +60,8 @@ public class SMTPClient {
     }
 
     private void setServerInfo() {
-        int pos = this.message.getTo().indexOf("@");
-        server = this.message.getTo().substring(pos + 1);
+        int pos = this.message.getFrom().indexOf("@");
+        server = this.message.getFrom().substring(pos + 1);
         if ("yahoo.com".equals(server) || "gmail.com".equals(server)) {
             port = 465;
         } else
