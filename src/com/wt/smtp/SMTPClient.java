@@ -141,7 +141,8 @@ public class SMTPClient {
      * @throws IOException
      */
     public void sayHelo() throws Exception {
-        int token = this.sendData("HELO " + this.server);
+        this.sendData("HELO " + this.server);
+        int token = this.getResultToken();
 
         if (token != 250) {
             throw new Exception("say helo to the server fail");
@@ -154,17 +155,20 @@ public class SMTPClient {
      * @throws Exception
      */
     public void login() throws Exception {
-        int token = this.sendData("AUTH LOGIN");
+        this.sendData("AUTH LOGIN");
+        int token = this.getResultToken();
         if (token != 334)
             throw new Exception("login fail");
         
-        token = this.sendData(Base64.encodeBase64String(this.message.getUser().
+        this.sendData(Base64.encodeBase64String(this.message.getUser().
             getUsername().getBytes()));
+        token = this.getResultToken();
         if (token != 334)
             throw new Exception("login fail");
         
-        token = this.sendData(Base64.encodeBase64String(this.message.getUser().
+        this.sendData(Base64.encodeBase64String(this.message.getUser().
             getPassword().getBytes()));
+        token = this.getResultToken();
         if (token != 235)
             throw new Exception("login fail");
         
@@ -177,12 +181,14 @@ public class SMTPClient {
      */
     public void setEnvelop() throws Exception {
         //set the mail from
-        int token = this.sendData("MAIL From:<" + this.message.getFrom() + ">");
+        this.sendData("MAIL From:<" + this.message.getFrom() + ">");
+        int token = this.getResultToken();
         if (token != 250)
             throw new Exception("set envelop fail");
 
         //set the mail to
-        token = this.sendData("RCPT To:<" + this.message.getTo() + ">");
+        this.sendData("RCPT To:<" + this.message.getTo() + ">");
+        token = this.getResultToken();
         if (token != 250)
             throw new Exception("set envelop fail");
 
@@ -194,11 +200,14 @@ public class SMTPClient {
      * @throws Exception
      */
     public void sendMessage() throws Exception {
-        int token = this.sendData("Data");
+        this.sendData("Data");
+        int token = this.getResultToken();
         if (token != 354)
             throw new Exception("send 'data' command fail");
 
-        token = this.sendData(this.message.getContent() + "\n.");
+        this.sendData(this.message.getContent());
+        this.sendData(".");
+        token = this.getResultToken();
         if (token != 250)
             throw new Exception("send the body of message fail");
 
@@ -210,7 +219,9 @@ public class SMTPClient {
      * @throws Exception
      */
     public void quit() throws Exception {
-        int token = this.sendData("QUIT");
+        this.sendData("QUIT");
+        int token = this.getResultToken();
+        
         logger.debug(token);
         if (token != 221) {
             throw new Exception("quit fail");
@@ -224,12 +235,11 @@ public class SMTPClient {
      * @param data "the data needed to send to the server"
      * @return "the returned token from the server"
      */
-    private int sendData(String data) throws IOException {
+    private void sendData(String data) throws IOException {
         this.output.println(data);
         this.output.flush();
 
         logger.debug("Send '" + data + "' to the server successfully");
-        return this.getResultToken();
     }
 
     /**
