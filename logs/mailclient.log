@@ -862,3 +862,19 @@
 202 [main] DEBUG com.wt.smtp.SMTPClient - 221
 202 [main] INFO com.wt.smtp.SMTPClient - quit successfully
 203 [main] INFO com.wt.smtp.SMTPClient - Send the message from xyz@10.0.2.4 to abc@10.0.2.5 successfully
+3 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+14 [main] DEBUG com.wt.smtp.SMTPClient - server: 10.0.2.4	port: 465
+14 [main] INFO com.wt.smtp.SMTPClient - Connecting 10.0.2.4 ...
+21 [main] ERROR com.wt.smtp.SMTPClient - java.net.ConnectException: 拒绝连接
+4 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+8 [main] DEBUG com.wt.smtp.SMTPClient - server: 10.0.2.4	port: 465
+8 [main] INFO com.wt.smtp.SMTPClient - Connecting 10.0.2.4 ...
+17 [main] ERROR com.wt.smtp.SMTPClient - java.net.ConnectException: 拒绝连接
+3 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+6 [main] DEBUG com.wt.smtp.SMTPClient - server: 10.0.2.4	port: 465
+7 [main] INFO com.wt.smtp.SMTPClient - Connecting 10.0.2.4 ...
+15 [main] ERROR com.wt.smtp.SMTPClient - java.net.ConnectException: 拒绝连接
+3 [main] INFO com.wt.smtp.SMTPClient - Create a smtp client
+7 [main] DEBUG com.wt.smtp.SMTPClient - server: 10.0.2.4	port: 465
+7 [main] INFO com.wt.smtp.SMTPClient - Connecting 10.0.2.4 ...
+15 [main] ERROR com.wt.smtp.SMTPClient - java.net.ConnectException: 拒绝连接
