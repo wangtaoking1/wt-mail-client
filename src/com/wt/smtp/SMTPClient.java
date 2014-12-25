@@ -18,7 +18,7 @@ import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
 
 /**
- * This is a client to send message to server
+ * This is a smtp client to send message to server
  * @author wangtao
  * @time 2014/11/13
  */
