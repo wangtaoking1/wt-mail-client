@@ -18,8 +18,19 @@ public class Manager {
         
     }
     
+    public static boolean userExists() {
+        return false;
+    }
     
     public static boolean auth() {
+        return true;
+    }
+    
+    public static boolean isLogin() {
+        return false;
+    }
+    
+    public static boolean regUser() {
         return true;
     }
 }
