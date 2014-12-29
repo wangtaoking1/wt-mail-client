@@ -60,13 +60,8 @@ public class MainFrame extends JFrame {
         
         receivePanel = new BoxPanel();
         sendPanel = new BoxPanel();
-        mailPanel = new sendMailPanel();
+        mailPanel = new SendMailPanel();
         
-        
-        //for test
-        receivePanel.add(new JLabel("receive box"));
-        sendPanel.add(new JLabel("send box"));
-        mailPanel.add(new JLabel("new mail"));
         
         logoutLab = new JLabel("注销");
         accountLabel = new JLabel(Manager.username + "@" + Manager.server);
@@ -93,6 +88,7 @@ public class MainFrame extends JFrame {
         mainPanel.add(BorderLayout.NORTH, headPanel);
         mainPanel.add(BorderLayout.WEST, leftPanel);
         mainPanel.add(BorderLayout.CENTER, receivePanel);
+        receiveLab.setForeground(Color.RED);
         
         this.add(mainPanel);
         
@@ -145,6 +141,11 @@ public class MainFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 //TODO
+                sendMailLab.setForeground(Color.BLACK);
+                receiveLab.setForeground(Color.BLACK);
+                sendLab.setForeground(Color.BLACK);
+                sendMailLab.setForeground(Color.RED);
+                
                 mainPanel.remove(receivePanel);
                 mainPanel.remove(sendPanel);
                 mainPanel.remove(mailPanel);
@@ -154,12 +155,10 @@ public class MainFrame extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent arg0) {
-                sendMailLab.setForeground(Color.RED);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                sendMailLab.setForeground(Color.BLACK);
             }
 
             @Override
@@ -175,6 +174,11 @@ public class MainFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 //TODO
+                sendMailLab.setForeground(Color.BLACK);
+                receiveLab.setForeground(Color.BLACK);
+                sendLab.setForeground(Color.BLACK);
+                receiveLab.setForeground(Color.RED);
+                
                 mainPanel.remove(receivePanel);
                 mainPanel.remove(sendPanel);
                 mainPanel.remove(mailPanel);
@@ -184,12 +188,10 @@ public class MainFrame extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent arg0) {
-                receiveLab.setForeground(Color.RED);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                receiveLab.setForeground(Color.BLACK);
             }
 
             @Override
@@ -205,6 +207,11 @@ public class MainFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 //TODO
+                sendMailLab.setForeground(Color.BLACK);
+                receiveLab.setForeground(Color.BLACK);
+                sendLab.setForeground(Color.BLACK);
+                sendLab.setForeground(Color.RED);
+                
                 mainPanel.remove(receivePanel);
                 mainPanel.remove(sendPanel);
                 mainPanel.remove(mailPanel);
@@ -214,12 +221,10 @@ public class MainFrame extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent arg0) {
-                sendLab.setForeground(Color.RED);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                sendLab.setForeground(Color.BLACK);
             }
 
             @Override

@@ -23,7 +23,7 @@ import com.wt.utils.MailMessage;
  * @time 2014/11/13
  */
 public class SMTPClient {
-    private Logger logger = LoggerFactory.getLogger(SMTPClient.class);
+    public static Logger logger = LoggerFactory.getLogger(SMTPClient.class);
 
     private Socket socket = null;
     private BufferedReader input = null;
