@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -70,7 +72,7 @@ public class RegFrame extends JFrame {
         this.add(jp3);
         this.add(jp4);
         
-        this.setButtonListener();
+        this.setActionListeners();
         
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenW = (int)screensize.getWidth();
@@ -84,7 +86,67 @@ public class RegFrame extends JFrame {
         this.setVisible(true);
     }
     
-    private void setButtonListener() {
+    private void setActionListeners() {
+        this.confirmField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                Manager.username = userField.getText();
+                Manager.password = new String(passField.getPassword());
+                String confirmP = new String(confirmField.getPassword());
+                
+                if (!confirmP.equals(Manager.password)) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "Error password", 
+                            "ERROR", JOptionPane.ERROR_MESSAGE);
+                    passField.setText("");
+                    confirmField.setText("");
+                    return ;
+                }
+                
+                if (Manager.userExists(Manager.username)) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "User Existed", 
+                            "ERROR", JOptionPane.ERROR_MESSAGE);
+                    userField.setText("");;
+                    passField.setText("");;
+                    confirmField.setText("");
+                }
+                else {
+                    if (Manager.regUser(Manager.username, Manager.password)) {
+                        new LoginFrame();
+                        dispose();
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(null, 
+                                "Register successfully", "", 
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else {
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(null, "Register Failed", 
+                                "ERROR", JOptionPane.ERROR_MESSAGE);
+                        userField.setText("");;
+                        passField.setText("");;
+                        confirmField.setText("");
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void keyTyped(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+        });
+        
         okBut.addActionListener(new ActionListener() {
 
             @Override
@@ -97,13 +159,12 @@ public class RegFrame extends JFrame {
                     Toolkit.getDefaultToolkit().beep();
                     JOptionPane.showMessageDialog(null, "Error password", 
                             "ERROR", JOptionPane.ERROR_MESSAGE);
-                    userField.setText("");;
-                    passField.setText("");;
+                    passField.setText("");
                     confirmField.setText("");
                     return ;
                 }
                 
-                if (Manager.userExists()) {
+                if (Manager.userExists(Manager.username)) {
                     Toolkit.getDefaultToolkit().beep();
                     JOptionPane.showMessageDialog(null, "User Existed", 
                             "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -112,9 +173,13 @@ public class RegFrame extends JFrame {
                     confirmField.setText("");
                 }
                 else {
-                    if (Manager.regUser()) {
+                    if (Manager.regUser(Manager.username, Manager.password)) {
                         new LoginFrame();
                         dispose();
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(null, 
+                                "Register successfully", "", 
+                                JOptionPane.INFORMATION_MESSAGE);
                     }
                     else {
                         Toolkit.getDefaultToolkit().beep();

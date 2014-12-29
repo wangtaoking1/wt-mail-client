@@ -7,7 +7,7 @@ import com.wt.utils.Manager;
 public class MailClient {
 
 	public static void main(String[] args) {
-	    if (Manager.isLogin()) {
+	    if (!Manager.isLogin()) {
 	        new ServerFrame();
 	    }
 	    else {

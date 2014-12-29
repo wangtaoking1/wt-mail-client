@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -65,7 +67,7 @@ public class LoginFrame extends JFrame {
         this.add(jp2);
         this.add(jp3);
         
-        this.setButtonListener();
+        this.setActionListeners();
         
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenW = (int)screensize.getWidth();
@@ -79,7 +81,48 @@ public class LoginFrame extends JFrame {
         this.setVisible(true);
     }
     
-    private void setButtonListener() {
+    private void setActionListeners() {
+        this.passField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                if (arg0.getKeyCode() == arg0.VK_ENTER) {
+                    Manager.username = userField.getText();
+                    Manager.password = new String(passField.getPassword());
+                    
+                    if (Manager.auth(Manager.username, Manager.password)) {
+                        Manager.writeData();
+                        
+                        new MainFrame();
+                        dispose();
+                    }
+                    else {
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(null, "Auth failed", "ERROR", 
+                                JOptionPane.ERROR_MESSAGE);
+                        Manager.username = null;
+                        Manager.password = null;
+                        userField.setText("");
+                        passField.setText("");
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void keyTyped(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+        });
+        
         okBut.addActionListener(new ActionListener() {
 
             @Override
@@ -87,7 +130,7 @@ public class LoginFrame extends JFrame {
                 Manager.username = userField.getText();
                 Manager.password = new String(passField.getPassword());
                 
-                if (Manager.auth()) {
+                if (Manager.auth(Manager.username, Manager.password)) {
                     Manager.writeData();
                     
                     new MainFrame();

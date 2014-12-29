@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -50,7 +52,7 @@ public class ServerFrame extends JFrame {
         this.add(jp1);
         this.add(jp2);
         
-        this.setButtonListener();
+        this.setActionListeners();
         
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenW = (int)screensize.getWidth();
@@ -64,7 +66,36 @@ public class ServerFrame extends JFrame {
         this.setVisible(true);
     }
     
-    private void setButtonListener() {
+    
+    private void setActionListeners() {
+        serverField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                if (arg0.getKeyCode() == arg0.VK_ENTER) {
+                    Manager.server = serverField.getText();
+                    
+                    new LoginFrame();
+                    dispose();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void keyTyped(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+        });
+        
+        
         okBut.addActionListener(new ActionListener() {
 
             @Override
@@ -75,6 +106,7 @@ public class ServerFrame extends JFrame {
                 dispose();
             }
         });
+        
         
         cancelBut.addActionListener(new ActionListener() {
 
