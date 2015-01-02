@@ -6,9 +6,11 @@ package com.wt.utils;
  */
 
 public class MailMessage {
+    private String time;
     private User user;
     private String from;
     private String to;
+    private String subject;
     private String content;
     
     public MailMessage() {
@@ -46,4 +48,17 @@ public class MailMessage {
         this.content = content;
     }
     
+    public String getTime() {
+        return this.time;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
+    
+    public String getSubject() {
+        return this.subject;
+    }
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 }

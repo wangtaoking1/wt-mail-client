@@ -25,8 +25,11 @@ public class LoggerFactory {
 		FileAppender appender1 = null;
 		//output to console
 		ConsoleAppender appender2 = null;
+		
+		ConfigParser parser = new ConfigParser("wt_mail.properties");
+		String logsPath = parser.getOption("logs_path");
 		try {
-			 appender1 = new FileAppender(new TTCCLayout(), "logs/mailclient.log");
+			 appender1 = new FileAppender(new TTCCLayout(), logsPath);
 			 appender2 = new ConsoleAppender(new TTCCLayout());
 		} catch (IOException e) {
 			e.printStackTrace();

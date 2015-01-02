@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import com.wt.pop3.receiveBoxRunnable;
 import com.wt.utils.Manager;
 
 public class MainFrame extends JFrame {
@@ -28,7 +29,8 @@ public class MainFrame extends JFrame {
     private final int HEIGHT = 600;
     
     private JPanel mainPanel;
-    private JPanel headPanel, leftPanel, receivePanel, sendPanel, mailPanel;
+    private JPanel headPanel, leftPanel, mailPanel;
+    private BoxPanel receivePanel, sendPanel;
     
     //head
     private JLabel logoutLab;
@@ -62,6 +64,7 @@ public class MainFrame extends JFrame {
         sendPanel = new BoxPanel();
         mailPanel = new SendMailPanel();
         
+        new Thread(new receiveBoxRunnable(this.receivePanel)).start();
         
         logoutLab = new JLabel("注销");
         accountLabel = new JLabel(Manager.username + "@" + Manager.server);
@@ -73,11 +76,11 @@ public class MainFrame extends JFrame {
         jp2 = new JPanel();
         jp3 = new JPanel();
         
-        receiveLab = new JLabel("收件箱");
+        receiveLab = new JLabel("   收件箱   ");
         jp1.add(receiveLab);
-        sendLab = new JLabel("发件箱");
+        sendLab = new JLabel("   发件箱   ");
         jp2.add(sendLab);
-        sendMailLab = new JLabel("发邮件");
+        sendMailLab = new JLabel("   发邮件   ");
         jp3.add(sendMailLab);
         
         leftPanel.add(jp1);

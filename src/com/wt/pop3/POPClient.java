@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
@@ -14,6 +15,7 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 import org.apache.commons.codec.binary.Base64;
 
+import com.wt.utils.ConfigParser;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
 
@@ -31,9 +33,18 @@ public class POPClient {
     private String server = null;
     private int port;
 
-    
-    public POPClient(String server, int port) {
-        this.setServerInfo(server, port);
+    public POPClient() {
+        ConfigParser parser = new ConfigParser("wt_mail.properties");
+        this.setServerInfo(parser.getOption("pop_server"), 
+                Integer.parseInt(parser.getOption("pop_port")));
+        
+        try {
+            this.init();
+        }
+        catch (Exception e) {
+            logger.info("pop client init failed");
+            return;
+        }
         logger.info("Create a pop client");
     }
 
@@ -141,5 +152,78 @@ public class POPClient {
 
         String[] items = line.split(" ");
         return items[0];
+    }
+    
+    public ArrayList<MailMessage> getReceiveMails() {
+        ArrayList<MailMessage> mailList = new ArrayList<MailMessage>();
+        int cnt = this.getMailCount();
+        for (int i = 1; i <= cnt; i++)
+            mailList.add(this.getMailInfo(i));
+        
+        return mailList;
+    }
+    
+    
+    /**
+     * To get the receive mail count of user
+     * @return
+     */
+    public int getMailCount() {
+        try {
+            this.sendData("stat");
+            String line = this.input.readLine();
+            String[] items = line.split(" ");
+            if (items[0].equalsIgnoreCase("+OK")) {
+                return Integer.parseInt(items[1]);
+            }
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
+        return 0;
+    }
+    
+    
+    public MailMessage getMailInfo(int n) {
+        MailMessage message = new MailMessage();
+        String content = null;
+        try {
+            this.sendData("retr " + n);
+            StringBuffer buffer = new StringBuffer();
+            while (true) {
+                String line = this.input.readLine();
+                if (line.equals("."))
+                    break;
+                buffer.append(line + "\n");
+            }
+            
+            content = buffer.toString();
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
+        
+        String[] content_items = content.split("\n\n", 2);
+        String[] headers = content_items[0].split("\n");
+        for (String header : headers) {
+            String[] items = header.split(": ", 2);
+            switch (items[0].toLowerCase()) {
+            case "time":
+                message.setTime(items[1]);
+                break;
+            case "from":
+                message.setFrom(items[1]);
+                break;
+            case "to":
+                message.setTo(items[1]);
+                break;
+            case "subject":
+                message.setSubject(items[1]);
+                break;
+            }
+        }
+        message.setContent(content_items[1]);
+        
+        return message;
     }
 }

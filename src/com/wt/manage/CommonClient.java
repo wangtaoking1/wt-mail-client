@@ -7,6 +7,7 @@ import java.net.Socket;
 
 import org.apache.log4j.Logger;
 
+import com.wt.utils.ConfigParser;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.Manager;
 
@@ -19,9 +20,10 @@ public class CommonClient {
     private String server = null;
     private int port;
     
-    public CommonClient(String server) {
-        this.server = server;
-        this.port = 5055;
+    public CommonClient() {
+        ConfigParser parser = new ConfigParser("wt_mail.properties");
+        this.server = parser.getOption("manage_server");
+        this.port = Integer.parseInt(parser.getOption("manage_port"));
         
         //Initial socket, input and output stream
         try {

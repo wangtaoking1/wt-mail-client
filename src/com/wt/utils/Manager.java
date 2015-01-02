@@ -31,7 +31,7 @@ public class Manager {
      * @return
      */
     public static boolean userExists(String username) {
-        CommonClient client = new CommonClient(Manager.server);
+        CommonClient client = new CommonClient();
         String ret = client.sendMessage("has " + username);
         client.close();
         if (ret.equalsIgnoreCase("true"))
@@ -47,7 +47,7 @@ public class Manager {
      * @return
      */
     public static boolean auth(String username, String password) {
-        CommonClient client = new CommonClient(Manager.server);
+        CommonClient client = new CommonClient();
         String ret = client.sendMessage("auth " + username + " " + password);
         client.close();
         
@@ -87,7 +87,7 @@ public class Manager {
      * @return
      */
     public static boolean regUser(String username, String password) {
-        CommonClient client = new CommonClient(Manager.server);
+        CommonClient client = new CommonClient();
         String ret = client.sendMessage("reg " + username + " " + password);
         
         if (ret.equalsIgnoreCase("+OK"))
@@ -103,7 +103,7 @@ public class Manager {
      * @return
      */
     public static boolean unregUser(String username, String password) {
-        CommonClient client = new CommonClient(Manager.server);
+        CommonClient client = new CommonClient();
         String ret = client.sendMessage("unreg " + username + " " + password);
         
         if (ret.equalsIgnoreCase("+OK"))
