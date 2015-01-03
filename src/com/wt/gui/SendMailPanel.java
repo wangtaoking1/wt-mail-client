@@ -21,9 +21,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
+import com.wt.manage.Manager;
 import com.wt.smtp.SMTPRunnable;
 import com.wt.utils.MailMessage;
-import com.wt.utils.Manager;
 import com.wt.utils.User;
 
 public class SendMailPanel extends JPanel {
@@ -34,7 +34,7 @@ public class SendMailPanel extends JPanel {
     private JLabel receiverLab, subjectLab, contentLab, fileLab;
     private JTextField receiverField, subjectField;
     private JTextArea contentArea;
-    private JButton sendBut;
+    private JButton sendBut, clearBut;
     private JScrollPane scrollPane;
     private ArrayList<String> fileList = null;
     
@@ -54,6 +54,7 @@ public class SendMailPanel extends JPanel {
         upPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         centerPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         downPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+        sendPanel.setLayout(new BoxLayout(sendPanel, BoxLayout.Y_AXIS));
         upPanel.setLayout(new BoxLayout(upPanel, BoxLayout.X_AXIS));
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         centerPanel.setLayout(new BorderLayout());
@@ -66,6 +67,8 @@ public class SendMailPanel extends JPanel {
         
         sendBut = new JButton("发送");
         sendPanel.add(sendBut);
+        clearBut = new JButton("清空");
+        sendPanel.add(clearBut);
         
         JPanel panel1 = new JPanel();
         receiverLab = new JLabel("收件人");
@@ -86,8 +89,9 @@ public class SendMailPanel extends JPanel {
         panel3.add(contentLab);
         centerPanel.add(BorderLayout.NORTH, panel3);
         contentArea = new JTextArea();
-        scrollPane = new JScrollPane();
-        scrollPane.setViewportView(contentArea);
+        contentArea.setLineWrap(true);
+        contentArea.setWrapStyleWord(true);
+        scrollPane = new JScrollPane(contentArea);
         centerPanel.add(BorderLayout.CENTER, scrollPane);
         
         fileLab = new JLabel("添加附件");
@@ -156,6 +160,16 @@ public class SendMailPanel extends JPanel {
             }
             
         });
+        
+        clearBut.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                // TODO Auto-generated method stub
+                SendMailPanel.this.clearContent();
+            }
+            
+        });
     }
     
     private void clearContent() {
@@ -210,5 +224,18 @@ public class SendMailPanel extends JPanel {
             }
         }
         return flag;
+    }
+    
+    
+    public void setSubject(String subject) {
+        this.subjectField.setText(subject);
+    }
+    
+    public void setReceiver(String receiver) {
+        this.receiverField.setText(receiver);
+    }
+    
+    public void setContent(String content) {
+        this.contentArea.setText(content);
     }
 }

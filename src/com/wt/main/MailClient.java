@@ -2,7 +2,7 @@ package com.wt.main;
 
 import com.wt.gui.MainFrame;
 import com.wt.gui.ServerFrame;
-import com.wt.utils.Manager;
+import com.wt.manage.Manager;
 
 public class MailClient {
 

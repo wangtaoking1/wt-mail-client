@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.wt.manage.Manager;
+
 public class ManagerTest {
 
     @Test

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.wt.utils.Manager;
+import com.wt.manage.Manager;
 
 public class RegFrame extends JFrame {
     private static final long serialVersionUID = 1L;

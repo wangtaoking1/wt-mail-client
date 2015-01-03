@@ -1,6 +1,5 @@
-package com.wt.utils;
+package com.wt.manage;
 
-import com.wt.manage.CommonClient;
 
 /**
  * 
@@ -14,10 +13,10 @@ public class Manager {
     private static boolean isLogin = false;
     
     public static void readData() {
-//        Manager.server = "10.0.2.4";
-//        Manager.username = "test1";
-//        Manager.password = "test1";
-//        Manager.isLogin = true;
+        Manager.server = "10.0.2.4";
+        Manager.username = "test1";
+        Manager.password = "test1";
+        Manager.isLogin = true;
     }
     
     public static void writeData() {

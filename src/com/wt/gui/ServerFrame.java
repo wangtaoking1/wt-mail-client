@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.wt.utils.Manager;
+import com.wt.manage.Manager;
 
 public class ServerFrame extends JFrame {
     private static final long serialVersionUID = 1L;

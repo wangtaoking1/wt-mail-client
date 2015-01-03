@@ -2,12 +2,15 @@ package com.wt.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 
 import com.wt.utils.MailMessage;
@@ -22,7 +25,8 @@ public class MailInfoFrame extends JFrame {
     
     private JPanel upPanel, downPanel;
     private JLabel subjectLab, receiverLab, timeLab, senderLab;
-    private JLabel contentLab;
+    private JTextArea contentArea;
+    private JScrollPane scrollPane;
     
     
     public MailInfoFrame(MailMessage message) {
@@ -41,6 +45,7 @@ public class MailInfoFrame extends JFrame {
         this.add(BorderLayout.CENTER, downPanel);
         
         subjectLab = new JLabel(this.message.getSubject());
+        subjectLab.setFont(new Font("微软雅黑", Font.BOLD, 18));
         senderLab = new JLabel("发件人：" + this.message.getFrom());
         timeLab = new JLabel("发送时间：" + this.message.getTime());
         receiverLab = new JLabel("收件人：" + this.message.getTo());
@@ -49,8 +54,13 @@ public class MailInfoFrame extends JFrame {
         upPanel.add(timeLab);
         upPanel.add(receiverLab);
         
-        contentLab = new JLabel(this.message.getContent());
-        downPanel.add(contentLab);
+        contentArea = new JTextArea();
+        contentArea.setLineWrap(true);
+        contentArea.setWrapStyleWord(true);
+        scrollPane = new JScrollPane(contentArea);
+        contentArea.setEditable(false);
+        contentArea.setText(this.message.getContent());
+        downPanel.add(scrollPane);
         
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenW = (int)screensize.getWidth();

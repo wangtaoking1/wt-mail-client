@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 
 import com.wt.utils.ConfigParser;
 import com.wt.utils.LoggerFactory;
-import com.wt.utils.Manager;
 
 public class CommonClient {
     private Logger logger = LoggerFactory.getLogger(CommonClient.class);

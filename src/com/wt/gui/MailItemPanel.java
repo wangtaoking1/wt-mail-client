@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,14 +20,14 @@ import com.wt.utils.MailMessage;
 public class MailItemPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
-    private BoxPanel parent;
+    public BoxPanel parent;
     private JLabel senderLab, timeLab, subjectLab;
     private JPanel upPanel, downPanel;
     
     public MailItemPanel(BoxPanel boxPanel) {
         super();
         this.parent = boxPanel;
-        //this.setBackground(Color.BLACK);
+        
         this.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
@@ -39,14 +40,15 @@ public class MailItemPanel extends JPanel {
         this.add(upPanel);
         this.add(downPanel);
         
-        
-        senderLab = new JLabel("test0@qq.com");
+        senderLab = new JLabel("From: test0@qq.com");
         upPanel.add(senderLab);
         upPanel.add(Box.createHorizontalGlue());
         timeLab = new JLabel("2014-12-28 20:30:45");
         upPanel.add(timeLab);
         
         subjectLab = new JLabel("hello world");
+        subjectLab.setFont(new Font("", Font.BOLD, 13));
+        subjectLab.setForeground(Color.GRAY);
         downPanel.add(subjectLab);
         downPanel.add(Box.createHorizontalGlue());
         

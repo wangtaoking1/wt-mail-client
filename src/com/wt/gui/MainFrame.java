@@ -19,8 +19,9 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
-import com.wt.pop3.receiveBoxRunnable;
-import com.wt.utils.Manager;
+import com.wt.manage.Manager;
+import com.wt.pop3.ReceiveBoxRunnable;
+import com.wt.pop3.SendBoxRunnable;
 
 public class MainFrame extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -60,8 +61,8 @@ public class MainFrame extends JFrame {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         
-        receivePanel = new BoxPanel();
-        sendPanel = new BoxPanel();
+        receivePanel = new BoxPanel(this);
+        sendPanel = new BoxPanel(this);
         mailPanel = new SendMailPanel();
         
         this.setDaemonThread();
@@ -115,12 +116,15 @@ public class MainFrame extends JFrame {
      * To set daemon thread for receive box and send box
      */
     private void setDaemonThread() {
-        Thread receiveThread = new Thread(new receiveBoxRunnable(
+        Thread receiveThread = new Thread(new ReceiveBoxRunnable(
                 this.receivePanel));
         receiveThread.setDaemon(true);
         receiveThread.start();
         
-        
+        Thread sendThread = new Thread(new SendBoxRunnable(
+                this.sendPanel));
+        sendThread.setDaemon(true);
+        sendThread.start();
     }
 
     public void setActionListeners() {
@@ -157,16 +161,7 @@ public class MainFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 //TODO
-                sendMailLab.setForeground(Color.BLACK);
-                receiveLab.setForeground(Color.BLACK);
-                sendLab.setForeground(Color.BLACK);
-                sendMailLab.setForeground(Color.RED);
-                
-                mainPanel.remove(receivePanel);
-                mainPanel.remove(sendPanel);
-                mainPanel.remove(mailPanel);
-                mainPanel.add(BorderLayout.CENTER, mailPanel);
-                mainPanel.updateUI();
+                MainFrame.this.changeMainPanel("mail");
             }
 
             @Override
@@ -190,16 +185,7 @@ public class MainFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 //TODO
-                sendMailLab.setForeground(Color.BLACK);
-                receiveLab.setForeground(Color.BLACK);
-                sendLab.setForeground(Color.BLACK);
-                receiveLab.setForeground(Color.RED);
-                
-                mainPanel.remove(receivePanel);
-                mainPanel.remove(sendPanel);
-                mainPanel.remove(mailPanel);
-                mainPanel.add(BorderLayout.CENTER, receivePanel);
-                mainPanel.updateUI();
+                MainFrame.this.changeMainPanel("receive");
             }
 
             @Override
@@ -223,16 +209,7 @@ public class MainFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 //TODO
-                sendMailLab.setForeground(Color.BLACK);
-                receiveLab.setForeground(Color.BLACK);
-                sendLab.setForeground(Color.BLACK);
-                sendLab.setForeground(Color.RED);
-                
-                mainPanel.remove(receivePanel);
-                mainPanel.remove(sendPanel);
-                mainPanel.remove(mailPanel);
-                mainPanel.add(BorderLayout.CENTER, sendPanel);
-                mainPanel.updateUI();
+                MainFrame.this.changeMainPanel("send");
             }
 
             @Override
@@ -250,5 +227,57 @@ public class MainFrame extends JFrame {
             public void mouseReleased(MouseEvent e) {}
             
         });
+    }
+    
+    
+    /**
+     * To change the main panel
+     * @param panel
+     */
+    public void changeMainPanel(String panel) {
+        sendMailLab.setForeground(Color.BLACK);
+        receiveLab.setForeground(Color.BLACK);
+        sendLab.setForeground(Color.BLACK);
+        
+        
+        mainPanel.remove(receivePanel);
+        mainPanel.remove(sendPanel);
+        mainPanel.remove(mailPanel);
+        
+        switch (panel) {
+        case "receive":
+            mainPanel.add(BorderLayout.CENTER, receivePanel);
+            receiveLab.setForeground(Color.RED);
+            break;
+        case "send":
+            mainPanel.add(BorderLayout.CENTER, sendPanel);
+            sendLab.setForeground(Color.RED);
+            break;
+        case "mail":
+            mainPanel.add(BorderLayout.CENTER, mailPanel);
+            sendMailLab.setForeground(Color.RED);
+            break;
+        }
+        
+        mainPanel.updateUI();
+    }
+    
+    
+    public SendMailPanel getMailPanel() {
+        return (SendMailPanel)this.mailPanel;
+    }
+    
+    
+    /**
+     * To get the current Panel
+     * @return
+     */
+    public String getCurrentPanel() {
+        if (receiveLab.getForeground() == Color.RED)
+            return "receive";
+        else if (sendLab.getForeground() == Color.RED)
+            return "send";
+        else
+            return "mail";
     }
 }

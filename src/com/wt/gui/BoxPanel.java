@@ -3,34 +3,55 @@ package com.wt.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
+import com.wt.pop3.POPClient;
 import com.wt.utils.MailMessage;
 
 public class BoxPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     
     private ArrayList<MailMessage> messageList = null;
-    private JPanel mainPanel;
-    private JScrollPane scrollPane = null;
     
-    public BoxPanel() {
+    
+    private MainFrame parent;
+    private JPanel funcPanel, mainPanel;
+    private JScrollPane scrollPane;
+    private JButton delBut, retBut, transBut;
+    
+    public BoxPanel(MainFrame frame) {
         super();
+        this.parent = frame;
         this.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         this.setLayout(new BorderLayout());
         
         this.messageList = new ArrayList<MailMessage>();
+        
+        funcPanel = new JPanel();
         mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         scrollPane = new JScrollPane(mainPanel);
-        //scrollPane.setViewportView(mainPanel);
+        
+        delBut = new JButton("删除");
+        retBut = new JButton("回复");
+        transBut = new JButton("转发");
+        funcPanel.add(delBut);
+        funcPanel.add(retBut);
+        funcPanel.add(transBut);
+        
+        this.add(BorderLayout.SOUTH, funcPanel);
         this.add(BorderLayout.CENTER, scrollPane);
-        this.updateMessageUI();
+        //this.updateMessageUI();
+        
+        this.addActionListeners();
     }
     
     
@@ -43,6 +64,8 @@ public class BoxPanel extends JPanel {
         for (int i = 0; i < cnt; i++) {
             MailItemPanel item = new MailItemPanel(BoxPanel.this);
             MailMessage message = this.messageList.get(i);
+            
+            //TODO: debug
             item.updateMails(message.getFrom(), message.getTime(), 
                     message.getSubject());
             this.mainPanel.add(item);
@@ -71,5 +94,109 @@ public class BoxPanel extends JPanel {
     
     public MailMessage getMessage(int n) {
         return this.messageList.get(n);
+    }
+    
+    
+    public void addActionListeners() {
+        delBut.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                // TODO Auto-generated method stub
+                Component[] comps = BoxPanel.this.getAllMailItems();
+                int cnt = 0;
+                for (cnt = 0; cnt < comps.length; cnt++) {
+                    if (comps[cnt].getBackground() == Color.BLACK)
+                        break;
+                }
+                if (cnt != comps.length) {
+                    BoxPanel.this.mainPanel.remove(comps[cnt]);
+                    BoxPanel.this.messageList.remove(cnt);
+                    POPClient client = new POPClient();
+                    if (BoxPanel.this.parent.getCurrentPanel()
+                            .equals("receive")) {
+                        client.delReceiveMail(cnt + 1);
+                    }
+                    if (BoxPanel.this.parent.getCurrentPanel()
+                            .equals("send")) {
+                        client.delSendMail(cnt + 1);
+                    }
+                    BoxPanel.this.updateMessageUI();
+                }
+                
+            }
+            
+        });
+        
+        retBut.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                // TODO Auto-generated method stub
+                Component[] comps = BoxPanel.this.getAllMailItems();
+                int cnt = 0;
+                for (cnt = 0; cnt < comps.length; cnt++) {
+                    if (comps[cnt].getBackground() == Color.BLACK)
+                        break;
+                }
+                if (cnt != comps.length) {
+                    MailMessage message = BoxPanel.this.getMessage(cnt);
+                    SendMailPanel mailPanel = BoxPanel.this.parent
+                            .getMailPanel();
+                    mailPanel.setReceiver(message.getFrom());
+                    mailPanel.setSubject("Reply: " + message.getSubject());
+                    mailPanel.setContent(BoxPanel.this.createReturnContent(
+                            message));
+                    BoxPanel.this.parent.changeMainPanel("mail");
+                }
+            }
+            
+        });
+        
+        transBut.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                // TODO Auto-generated method stub
+                Component[] comps = BoxPanel.this.getAllMailItems();
+                int cnt = 0;
+                for (cnt = 0; cnt < comps.length; cnt++) {
+                    if (comps[cnt].getBackground() == Color.BLACK)
+                        break;
+                }
+                if (cnt != comps.length) {
+                    MailMessage message = BoxPanel.this.getMessage(cnt);
+                    SendMailPanel mailPanel = BoxPanel.this.parent
+                            .getMailPanel();
+                    mailPanel.setReceiver("");
+                    mailPanel.setSubject("Forward: " + message.getSubject());
+                    mailPanel.setContent(BoxPanel.this.createReturnContent(
+                            message));
+                    BoxPanel.this.parent.changeMainPanel("mail");
+                }
+            }
+            
+        });
+    }
+    
+    
+    /**
+     * To create message content for returned mail
+     * @param message
+     * @return
+     */
+    public String createReturnContent(MailMessage message) {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("\n\n\n");
+        buffer.append("-------------------------------------------------------"
+                + "-----------------------------------------------------------"
+                + "-----------------------------------------------------------"
+                + "----\n");
+        buffer.append("From: " + message.getFrom() + "\n");
+        buffer.append("To: " + message.getTo() + "\n");
+        buffer.append("Time: " + message.getTime() + "\n");
+        buffer.append("Subject: " + message.getSubject() + "\n\n");
+        buffer.append(message.getContent());
+        return buffer.toString();
     }
 }

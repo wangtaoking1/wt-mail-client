@@ -7,30 +7,31 @@ import javax.swing.SwingUtilities;
 import org.apache.log4j.Logger;
 
 import com.wt.gui.BoxPanel;
+import com.wt.manage.Manager;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
-import com.wt.utils.Manager;
 
-
-public class receiveBoxRunnable implements Runnable {
-    private Logger logger = LoggerFactory.getLogger(sendBoxRunnable.class);
+public class SendBoxRunnable implements Runnable {
+    private Logger logger = LoggerFactory.getLogger(SendBoxRunnable.class);
 
     private BoxPanel boxPanel = null;
     public Runnable runx;
     
-    public receiveBoxRunnable(BoxPanel boxPanel) {
+    public SendBoxRunnable(BoxPanel boxPanel) {
+        this.boxPanel = boxPanel;
+        
         this.boxPanel = boxPanel;
         
         runx = new Runnable() {
             public void run() {
-                receiveBoxRunnable.this.boxPanel.updateMessageUI();
+                SendBoxRunnable.this.boxPanel.updateMessageUI();
             }
         };
     }
     
     @Override
     public void run() {
-        logger.info("a new receiveBoxThread started");
+        logger.info("a new sendBoxThread started");
         
         while (true) {
             try {
@@ -52,23 +53,20 @@ public class receiveBoxRunnable implements Runnable {
             }
         }
         
-        logger.info("old receiveBoxThread dead");
+        logger.info("sendBoxThread dead");
     }
     
-    
     /**
-     * To check whether or not need to update mails
+     * To check whether or not need to update mails in send box
      * @return true for need to update, false for not
      */
     private boolean checkUpdate() {
         POPClient client = new POPClient();
         
-        int cnt = client.getMailCount();
+        int cnt = client.getSendMailsCount();
         if (cnt == boxPanel.getMessageList().size()) {
-            client.close();
             return false;
         }
-        client.close();
         return true;
     }
 
@@ -80,9 +78,9 @@ public class receiveBoxRunnable implements Runnable {
     private ArrayList<MailMessage> getMessageList() {
         ArrayList<MailMessage> mailList = new ArrayList<MailMessage>();
         POPClient client = new POPClient();
-        mailList = client.getReceiveMails();
-        client.close();
+        mailList = client.getSendMails();
         
         return mailList;
     }
+
 }

@@ -61,4 +61,5 @@ public class MailMessage {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+    
 }

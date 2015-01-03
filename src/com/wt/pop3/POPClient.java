@@ -15,10 +15,10 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 import org.apache.commons.codec.binary.Base64;
 
+import com.wt.manage.Manager;
 import com.wt.utils.ConfigParser;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
-import com.wt.utils.Manager;
 
 /**
  * This is a pop client to pull message from server
@@ -90,7 +90,7 @@ public class POPClient {
      * Initial the socket, input, output
      * @throws Exception
      */
-    public void init() throws Exception {
+    private void init() throws Exception {
         logger.debug("Connecting " + server + " ...");
 
         socket = new Socket(server, port);
@@ -112,7 +112,7 @@ public class POPClient {
      * @param pass
      * @return
      */
-    public boolean auth(String user, String pass) {
+    private boolean auth(String user, String pass) {
         try {
             this.sendData("user " + user);
             String token = this.getResultToken();
@@ -169,12 +169,33 @@ public class POPClient {
         return items[0];
     }
     
+    
+    /**
+     * To get the receive mails of user
+     * @return
+     */
     public ArrayList<MailMessage> getReceiveMails() {
         ArrayList<MailMessage> mailList = new ArrayList<MailMessage>();
-        int cnt = this.getMailCount();
-        for (int i = 1; i <= cnt; i++)
-            mailList.add(this.getMailInfo(i));
+        int cnt = 0;
+        //get the number of mails
+        try {
+            this.sendData("stat");
+            String line = this.input.readLine();
+            String[] items = line.split(" ");
+            if (items[0].equalsIgnoreCase("+OK")) {
+                cnt = Integer.parseInt(items[1]);
+            }
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
         
+        //get the info of every mail
+        for (int i = 1; i <= cnt; i++) {
+            mailList.add(this.getReceiveMailInfo(i));
+        }
+        
+        this.close();
         return mailList;
     }
     
@@ -183,23 +204,31 @@ public class POPClient {
      * To get the receive mail count of user
      * @return
      */
-    public int getMailCount() {
+    public int getReceiveMailsCount() {
+        int cnt = 0;
         try {
             this.sendData("stat");
             String line = this.input.readLine();
             String[] items = line.split(" ");
             if (items[0].equalsIgnoreCase("+OK")) {
-                return Integer.parseInt(items[1]);
+                cnt = Integer.parseInt(items[1]);
             }
         }
         catch (Exception e) {
             logger.error(e);
         }
-        return 0;
+        
+        this.close();
+        return cnt;
     }
     
     
-    public MailMessage getMailInfo(int n) {
+    /**
+     * To get the number n mail of user
+     * @param n
+     * @return
+     */
+    private MailMessage getReceiveMailInfo(int n) {
         MailMessage message = new MailMessage();
         String content = null;
         try {
@@ -240,5 +269,149 @@ public class POPClient {
         message.setContent(content_items[1]);
         
         return message;
+    }
+    
+
+    /**
+     * To del the number index mail of user received
+     * @param index
+     * @return
+     */
+    public boolean delReceiveMail(int index) {
+        boolean flag = false;
+        try {
+            this.sendData("dele " + index);
+            flag = true;
+        }
+        catch (Exception e) {
+            logger.error(e);
+            flag = false;
+        }
+        
+        this.close();
+        return flag;
+    }
+    
+    
+    /**
+     * To get the send mail count of user
+     * @return
+     */
+    public int getSendMailsCount() {
+        int cnt = 0;
+        try {
+            this.sendData("sstat");
+            String line = this.input.readLine();
+            String[] items = line.split(" ");
+            if (items[0].equalsIgnoreCase("+OK")) {
+                cnt = Integer.parseInt(items[1]);
+            }
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
+        
+        this.close();
+        return cnt;
+    }
+    
+    
+    /**
+     * To get the number n mail of user sended
+     * @param n
+     * @return
+     */
+    private MailMessage getSendMailInfo(int n) {
+        MailMessage message = new MailMessage();
+        String content = null;
+        try {
+            this.sendData("sretr " + n);
+            StringBuffer buffer = new StringBuffer();
+            while (true) {
+                String line = this.input.readLine();
+                if (line.equals("."))
+                    break;
+                buffer.append(line + "\n");
+            }
+            
+            content = buffer.toString();
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
+        
+        String[] content_items = content.split("\n\n", 2);
+        String[] headers = content_items[0].split("\n");
+        for (String header : headers) {
+            String[] items = header.split(": ", 2);
+            switch (items[0].toLowerCase()) {
+            case "time":
+                message.setTime(items[1]);
+                break;
+            case "from":
+                message.setFrom(items[1]);
+                break;
+            case "to":
+                message.setTo(items[1]);
+                break;
+            case "subject":
+                message.setSubject(items[1]);
+                break;
+            }
+        }
+        message.setContent(content_items[1]);
+        
+        return message;
+    }
+    
+    
+    /**
+     * To get the receive mails of user
+     * @return
+     */
+    public ArrayList<MailMessage> getSendMails() {
+        ArrayList<MailMessage> mailList = new ArrayList<MailMessage>();
+        int cnt = 0;
+        //get the number of mails
+        try {
+            this.sendData("sstat");
+            String line = this.input.readLine();
+            String[] items = line.split(" ");
+            if (items[0].equalsIgnoreCase("+OK")) {
+                cnt = Integer.parseInt(items[1]);
+            }
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
+        
+        //get the info of every mail
+        for (int i = 1; i <= cnt; i++) {
+            mailList.add(this.getSendMailInfo(i));
+        }
+        
+        this.close();
+        return mailList;
+    }
+    
+    
+    /**
+     * To del the number index mail of user sended
+     * @param index
+     * @return
+     */
+    public boolean delSendMail(int index) {
+        boolean flag = false;
+        try {
+            this.sendData("sdele " + index);
+            flag = true;
+        }
+        catch (Exception e) {
+            logger.error(e);
+            flag = false;
+        }
+        
+        this.close();
+        return flag;
     }
 }
