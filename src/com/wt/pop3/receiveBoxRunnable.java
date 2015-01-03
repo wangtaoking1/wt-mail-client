@@ -34,6 +34,9 @@ public class receiveBoxRunnable implements Runnable {
         
         while (true) {
             try {
+                if (!Manager.isLogin())
+                    break;
+                
                 if (this.checkUpdate()) {
                     this.boxPanel.updateMessageList(this.getMessageList());
                     
@@ -41,7 +44,7 @@ public class receiveBoxRunnable implements Runnable {
                     SwingUtilities.invokeAndWait(runx);
                 }
 
-                Thread.sleep(1 * 1000);
+                Thread.sleep(10 * 1000);
             }
             catch (Exception e) {
                 logger.error(e);
@@ -50,7 +53,6 @@ public class receiveBoxRunnable implements Runnable {
         }
         
         logger.info("old receiveBoxThread dead");
-        new Thread(new sendBoxRunnable(this.boxPanel)).start();
     }
     
     
@@ -60,14 +62,14 @@ public class receiveBoxRunnable implements Runnable {
      */
     private boolean checkUpdate() {
         POPClient client = new POPClient();
-        if (client.auth(Manager.username, Manager.password)) {
-            int cnt = client.getMailCount();
-            if (cnt == boxPanel.getMessageList().size()) {
-                return false;
-            }
-            return true;
+        
+        int cnt = client.getMailCount();
+        if (cnt == boxPanel.getMessageList().size()) {
+            client.close();
+            return false;
         }
-        return false;
+        client.close();
+        return true;
     }
 
     
@@ -78,9 +80,8 @@ public class receiveBoxRunnable implements Runnable {
     private ArrayList<MailMessage> getMessageList() {
         ArrayList<MailMessage> mailList = new ArrayList<MailMessage>();
         POPClient client = new POPClient();
-        if (client.auth(Manager.username, Manager.password)) {
-            mailList = client.getReceiveMails();
-        }
+        mailList = client.getReceiveMails();
+        client.close();
         
         return mailList;
     }

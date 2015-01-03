@@ -18,6 +18,7 @@ import org.apache.commons.codec.binary.Base64;
 import com.wt.utils.ConfigParser;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
+import com.wt.utils.Manager;
 
 /**
  * This is a pop client to pull message from server
@@ -42,14 +43,28 @@ public class POPClient {
             this.init();
         }
         catch (Exception e) {
-            logger.info("pop client init failed");
+            logger.error("pop client init failed");
+            this.close();
             return;
         }
-        logger.info("Create a pop client");
+        
+        if (!this.auth(Manager.username, Manager.password)) {
+            logger.info(Manager.username + " auth failed");
+            return ;
+        }
+        logger.debug("Create a pop client");
     }
 
     
     public void close() {
+        try {
+            this.sendData("quit");
+            String line = this.input.readLine();
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
+        
         if (socket != null) {
             try {
                 socket.close();
@@ -76,7 +91,7 @@ public class POPClient {
      * @throws Exception
      */
     public void init() throws Exception {
-        logger.info("Connecting " + server + " ...");
+        logger.debug("Connecting " + server + " ...");
 
         socket = new Socket(server, port);
         input = new BufferedReader(new InputStreamReader(
@@ -87,7 +102,7 @@ public class POPClient {
         if (!token.equalsIgnoreCase("+OK")) {
             throw new Exception("Connected " + server + " fail");
         }
-        logger.info("Connected " + server + " successfully");
+        logger.debug("Connected " + server + " successfully");
     }
 
 

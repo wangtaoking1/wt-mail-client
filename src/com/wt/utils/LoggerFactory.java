@@ -11,33 +11,38 @@ import org.apache.log4j.*;
  *
  */
 public class LoggerFactory {
-	
-	/**
-	 * @param clazz "the class needed to print log"
-	 * @return 
-	 */
-	public static Logger getLogger(Class clazz) {
-		Logger logger = Logger.getLogger(clazz);
-		
-		logger.setLevel(Level.DEBUG);
-		
-		//output to file
-		FileAppender appender1 = null;
-		//output to console
-		ConsoleAppender appender2 = null;
-		
-		ConfigParser parser = new ConfigParser("wt_mail.properties");
-		String logsPath = parser.getOption("logs_path");
-		try {
-			 appender1 = new FileAppender(new TTCCLayout(), logsPath);
-			 appender2 = new ConsoleAppender(new TTCCLayout());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		logger.addAppender(appender1);
-		logger.addAppender(appender2);
-		
-		return logger;
-	}
+    private static String logPath = "logs/mailserver.log";
+    /**
+     * @param clazz "the class needed to print log"
+     * @return
+     */
+    public static Logger getLogger(Class clazz) {
+        Logger logger = Logger.getLogger(clazz);
+
+        ConfigParser parser = new ConfigParser("wt_mail.properties");
+        if (parser.getOption("debug") != null && parser.getOption("debug")
+                .equals("true"))
+            logger.setLevel(Level.DEBUG);
+        else
+            logger.setLevel(Level.INFO);
+        
+        if (!parser.getOption("logs_path").equals(""))
+            logPath = parser.getOption("logs_path");
+
+        //output to file
+        FileAppender appender1 = null;
+        //output to console
+        ConsoleAppender appender2 = null;
+        try {
+            appender1 = new FileAppender(new TTCCLayout(), logPath);
+            appender2 = new ConsoleAppender(new TTCCLayout());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        logger.addAppender(appender1);
+        logger.addAppender(appender2);
+
+        return logger;
+    }
 }

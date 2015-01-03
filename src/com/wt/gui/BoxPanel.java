@@ -1,6 +1,8 @@
 package com.wt.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -31,13 +33,21 @@ public class BoxPanel extends JPanel {
         this.updateMessageUI();
     }
     
+    
+    /**
+     * To update the receive box UI according to the mail list
+     */
     public void updateMessageUI() {
-        //TODO: update the UI according to mail list
-        int cnt = this.mainPanel.getComponentCount();
-        
+        int cnt = this.messageList.size();
         this.mainPanel.removeAll();
-        for (int i = 0; i <= cnt; i++)
-            this.mainPanel.add(new MailItemPanel());
+        for (int i = 0; i < cnt; i++) {
+            MailItemPanel item = new MailItemPanel(BoxPanel.this);
+            MailMessage message = this.messageList.get(i);
+            item.updateMails(message.getFrom(), message.getTime(), 
+                    message.getSubject());
+            this.mainPanel.add(item);
+        }
+        this.removeAllFocus();
         this.scrollPane.updateUI();
     }
     
@@ -47,5 +57,19 @@ public class BoxPanel extends JPanel {
     
     public ArrayList<MailMessage> getMessageList() {
         return this.messageList;
+    }
+    
+    public void removeAllFocus() {
+        for (Component comp : this.mainPanel.getComponents()) {
+            comp.setBackground(Color.WHITE);
+        }
+    }
+    
+    public Component[] getAllMailItems() {
+        return this.mainPanel.getComponents();
+    }
+    
+    public MailMessage getMessage(int n) {
+        return this.messageList.get(n);
     }
 }

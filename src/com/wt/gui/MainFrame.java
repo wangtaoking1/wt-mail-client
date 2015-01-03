@@ -64,7 +64,7 @@ public class MainFrame extends JFrame {
         sendPanel = new BoxPanel();
         mailPanel = new SendMailPanel();
         
-        new Thread(new receiveBoxRunnable(this.receivePanel)).start();
+        this.setDaemonThread();
         
         logoutLab = new JLabel("注销");
         accountLabel = new JLabel(Manager.username + "@" + Manager.server);
@@ -110,6 +110,19 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
     }
     
+    
+    /**
+     * To set daemon thread for receive box and send box
+     */
+    private void setDaemonThread() {
+        Thread receiveThread = new Thread(new receiveBoxRunnable(
+                this.receivePanel));
+        receiveThread.setDaemon(true);
+        receiveThread.start();
+        
+        
+    }
+
     public void setActionListeners() {
         //logout
         logoutLab.addMouseListener(new MouseListener() {
