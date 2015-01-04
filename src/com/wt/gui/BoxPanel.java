@@ -16,6 +16,11 @@ import javax.swing.border.EtchedBorder;
 import com.wt.pop3.POPClient;
 import com.wt.utils.MailMessage;
 
+/**
+ * BoxPanel is the mail box Panel
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class BoxPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     
@@ -64,6 +69,8 @@ public class BoxPanel extends JPanel {
     public void updateMessageUI() {
         int cnt = this.messageList.size();
         this.mainPanel.removeAll();
+        
+        int unreaded = 0;
         for (int i = 0; i < cnt; i++) {
             MailItemPanel item = new MailItemPanel(BoxPanel.this);
             MailMessage message = this.messageList.get(i);
@@ -76,36 +83,77 @@ public class BoxPanel extends JPanel {
                 item.updateMails(message.getTo(), message.getTime(), 
                         message.getSubject());
             }
-                
+            
+            //Update the unread mail UI
+            if (message.getReaded()) {
+                item.setHasReadUI();
+            }
+            else {
+                item.setUnReadUI();
+                unreaded++;
+            }
+            
             this.mainPanel.add(item);
         }
         this.removeAllFocus();
         this.scrollPane.updateUI();
+
+        if (this.boxType == BoxType.RECEIVEBOX) {
+            BoxPanel.this.parent.setReceiveBoxUI(unreaded);
+        }
     }
     
+    
+    /**
+     * To update the message list
+     * @param messageList
+     */
     public void updateMessageList(ArrayList<MailMessage> messageList) {
         this.messageList = messageList;
     }
     
+    
+    /**
+     * To get the message list
+     * @return
+     */
     public ArrayList<MailMessage> getMessageList() {
         return this.messageList;
     }
     
+    
+    /**
+     * To remove all focuses on mail item
+     */
     public void removeAllFocus() {
         for (Component comp : this.mainPanel.getComponents()) {
             comp.setBackground(Color.WHITE);
         }
     }
     
+    
+    /**
+     * To get all mail items
+     * @return
+     */
     public Component[] getAllMailItems() {
         return this.mainPanel.getComponents();
     }
     
+    
+    /**
+     * To get the number n message
+     * @param n
+     * @return
+     */
     public MailMessage getMessage(int n) {
         return this.messageList.get(n);
     }
     
     
+    /**
+     * To add listeners to some components
+     */
     public void addActionListeners() {
         delBut.addActionListener(new ActionListener() {
 
@@ -208,7 +256,20 @@ public class BoxPanel extends JPanel {
     }
     
     
+    /**
+     * To get the type of this boxPanel
+     * @return
+     */
     public BoxType getBoxType() {
         return this.boxType;
+    }
+    
+    
+    /**
+     * To set number index mail read
+     * @param index
+     */
+    public void readMail(int index) {
+        this.messageList.get(index).setReaded(true);
     }
 }

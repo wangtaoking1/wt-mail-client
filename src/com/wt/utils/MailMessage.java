@@ -12,6 +12,7 @@ public class MailMessage {
     private String to;
     private String subject;
     private String content;
+    private boolean readed;
     
     public MailMessage() {
         this.user = new User();
@@ -62,4 +63,10 @@ public class MailMessage {
         this.subject = subject;
     }
     
+    public boolean getReaded() {
+        return this.readed;
+    }
+    public void setReaded(boolean readed) {
+        this.readed = readed;
+    }
 }

@@ -35,9 +35,12 @@ public class POPClient {
     private int port;
 
     public POPClient() {
-        ConfigParser parser = new ConfigParser("wt_mail.properties");
-        this.setServerInfo(parser.getOption("pop_server"), 
-                Integer.parseInt(parser.getOption("pop_port")));
+//        ConfigParser parser = new ConfigParser("wt_mail.properties");
+//        this.setServerInfo(parser.getOption("pop_server"), 
+//                Integer.parseInt(parser.getOption("pop_port")));
+//        parser.closeFile();
+        
+        this.setServerInfo(Manager.server, 110);
         
         try {
             this.init();
@@ -268,6 +271,18 @@ public class POPClient {
         }
         message.setContent(content_items[1]);
         
+        boolean flag = false;
+        try {
+            this.sendData("isr " + n);
+            String line = this.input.readLine();
+            if (line.equals("1"))
+                flag = true;
+        }
+        catch (Exception e) {
+            logger.error(e);
+        }
+        message.setReaded(flag);
+        
         return message;
     }
     
@@ -361,6 +376,8 @@ public class POPClient {
         }
         message.setContent(content_items[1]);
         
+        message.setReaded(true);
+        
         return message;
     }
     
@@ -405,6 +422,30 @@ public class POPClient {
         try {
             this.sendData("sdele " + index);
             flag = true;
+        }
+        catch (Exception e) {
+            logger.error(e);
+            flag = false;
+        }
+        
+        this.close();
+        return flag;
+    }
+    
+    
+    /**
+     * To read the mail
+     * @param index
+     * @return
+     */
+    public boolean readMail(int index) {
+        boolean flag = false;
+        
+        try {
+            this.sendData("read " + index);
+            String line = this.input.readLine();
+            if (line.equalsIgnoreCase("+OK"))
+                flag = true;
         }
         catch (Exception e) {
             logger.error(e);

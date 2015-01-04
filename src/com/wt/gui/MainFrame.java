@@ -24,6 +24,12 @@ import com.wt.manage.Manager;
 import com.wt.pop3.ReceiveBoxRunnable;
 import com.wt.pop3.SendBoxRunnable;
 
+
+/**
+ * MainFrame is the main frame after user's login
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class MainFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
@@ -78,7 +84,7 @@ public class MainFrame extends JFrame {
         jp2 = new JPanel();
         jp3 = new JPanel();
         
-        receiveLab = new JLabel("   收件箱   ");
+        receiveLab = new JLabel("   收件箱  ");
         jp1.add(receiveLab);
         sendLab = new JLabel("   发件箱   ");
         jp2.add(sendLab);
@@ -128,6 +134,7 @@ public class MainFrame extends JFrame {
         sendThread.start();
     }
 
+    
     public void setActionListeners() {
         //logout
         logoutLab.addMouseListener(new MouseListener() {
@@ -280,5 +287,18 @@ public class MainFrame extends JFrame {
             return "send";
         else
             return "mail";
+    }
+    
+    
+    /**
+     * To update the receive box UI according to the unread mails account
+     * @param cnt
+     */
+    public void setReceiveBoxUI(int cnt) {
+        if (cnt == 0)
+            this.receiveLab.setText("   收件箱    ");
+        else
+            this.receiveLab.setText("   收件箱 (" + cnt + ")  ");
+        this.receiveLab.updateUI();
     }
 }

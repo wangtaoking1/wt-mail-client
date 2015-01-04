@@ -34,13 +34,13 @@ public class ServerFrame extends JFrame {
         jp1 = new JPanel();
         jp2 = new JPanel();
         
-        serverLab = new JLabel("server: ");
+        serverLab = new JLabel("服务器地址: ");
         serverField = new JTextField(15);
         
         this.setDefaultValue();
         
-        okBut = new JButton("OK");
-        cancelBut = new JButton("Cancel");
+        okBut = new JButton("下一步");
+        cancelBut = new JButton("取消");
         
         jp1.add(serverLab);
         jp1.add(serverField);
@@ -62,7 +62,7 @@ public class ServerFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setSize(this.WIDTH, this.HEIGHT);
-        this.setTitle("Login");
+        this.setTitle("登录");
         this.setVisible(true);
     }
     

@@ -18,6 +18,12 @@ import javax.swing.JTextField;
 
 import com.wt.manage.Manager;
 
+
+/**
+ * RegFrame the frame for users register
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class RegFrame extends JFrame {
     private static final long serialVersionUID = 1L;
     
@@ -44,14 +50,14 @@ public class RegFrame extends JFrame {
         jp3 = new JPanel();
         jp4 = new JPanel();
         
-        userLabel = new JLabel("username");
-        passLabel = new JLabel("password");
-        confirmLabel = new JLabel("confirm");
+        userLabel = new JLabel("用户名 ");
+        passLabel = new JLabel("密码   ");
+        confirmLabel = new JLabel("密码确认");
         userField = new JTextField(15);
         passField = new JPasswordField(15);
         confirmField = new JPasswordField(15);
-        okBut = new JButton("register");
-        cancelBut = new JButton("cancel");
+        okBut = new JButton("注册");
+        cancelBut = new JButton("取消");
         
         
         this.setLayout(new GridLayout(4, 1));
@@ -82,7 +88,7 @@ public class RegFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setSize(this.WIDTH, this.HEIGHT);
-        this.setTitle("Register");
+        this.setTitle("注册");
         this.setVisible(true);
     }
     
@@ -92,6 +98,8 @@ public class RegFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent arg0) {
                 // TODO Auto-generated method stub
+                if (arg0.getKeyCode() != arg0.VK_ENTER)
+                    return ;
                 Manager.username = userField.getText();
                 Manager.password = new String(passField.getPassword());
                 String confirmP = new String(confirmField.getPassword());

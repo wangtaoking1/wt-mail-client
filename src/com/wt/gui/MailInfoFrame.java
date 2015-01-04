@@ -15,6 +15,12 @@ import javax.swing.border.EtchedBorder;
 
 import com.wt.utils.MailMessage;
 
+
+/**
+ * MailInfoFrame is the frame to show the information of mails
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class MailInfoFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 

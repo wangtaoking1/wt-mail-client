@@ -18,6 +18,11 @@ import javax.swing.JTextField;
 
 import com.wt.manage.Manager;
 
+/**
+ * LoginFrame is the frame for login
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class LoginFrame extends JFrame {
     private static final long serialVersionUID = 1L;
     
@@ -41,16 +46,16 @@ public class LoginFrame extends JFrame {
         jp1 = new JPanel();
         jp2 = new JPanel();
         jp3 = new JPanel();
-        userLabel = new JLabel("username");
-        passLabel = new JLabel("password");
+        userLabel = new JLabel("用户名");
+        passLabel = new JLabel("密码  ");
         userField = new JTextField(15);
         passField = new JPasswordField(15);
         
         this.setDefaultValue();
         
-        okBut = new JButton("login");
-        backBut = new JButton("back");
-        regBut = new JButton("register");
+        okBut = new JButton("登录");
+        backBut = new JButton("返回");
+        regBut = new JButton("注册");
         
         this.setLayout(new GridLayout(3, 1));
         jp1.add(userLabel);
@@ -77,7 +82,7 @@ public class LoginFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setSize(this.WIDTH, this.HEIGHT);
-        this.setTitle("Login");
+        this.setTitle("登录");
         this.setVisible(true);
     }
     
@@ -91,9 +96,7 @@ public class LoginFrame extends JFrame {
                     Manager.username = userField.getText();
                     Manager.password = new String(passField.getPassword());
                     
-                    if (Manager.auth(Manager.username, Manager.password)) {
-                        Manager.writeData();
-                        
+                    if (Manager.auth(Manager.username, Manager.password)) {                       
                         new MainFrame();
                         dispose();
                     }
@@ -131,8 +134,6 @@ public class LoginFrame extends JFrame {
                 Manager.password = new String(passField.getPassword());
                 
                 if (Manager.auth(Manager.username, Manager.password)) {
-                    Manager.writeData();
-                    
                     new MainFrame();
                     dispose();
                 }
@@ -169,6 +170,10 @@ public class LoginFrame extends JFrame {
         });
     }
     
+    
+    /**
+     * To set default value for userField and passField
+     */
     private void setDefaultValue() {
         if (Manager.username != null) {
             this.userField.setText(Manager.username);

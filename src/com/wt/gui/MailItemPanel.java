@@ -16,8 +16,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
 import com.wt.gui.BoxPanel.BoxType;
+import com.wt.pop3.POPClient;
 import com.wt.utils.MailMessage;
 
+/**
+ * MailItemPanel is the panel to show the header of a mail
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class MailItemPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
@@ -49,7 +55,7 @@ public class MailItemPanel extends JPanel {
         
         subjectLab = new JLabel("hello world");
         subjectLab.setFont(new Font("", Font.BOLD, 13));
-        subjectLab.setForeground(Color.GRAY);
+//        subjectLab.setForeground(Color.GRAY);
         downPanel.add(subjectLab);
         downPanel.add(Box.createHorizontalGlue());
         
@@ -58,7 +64,7 @@ public class MailItemPanel extends JPanel {
     
     
     /**
-     * To update the UI
+     * To update the mail item UI
      * @param sender
      * @param time
      * @param subject
@@ -92,6 +98,14 @@ public class MailItemPanel extends JPanel {
                     if (cnt != comps.length) {
                         new MailInfoFrame(MailItemPanel.this.parent
                                 .getMessage(cnt));
+                        
+                        if (MailItemPanel.this.parent.getBoxType() == 
+                                BoxType.RECEIVEBOX) {
+                            POPClient client = new POPClient();
+                            client.readMail(cnt + 1);
+                            MailItemPanel.this.parent.readMail(cnt);
+                            MailItemPanel.this.parent.updateMessageUI();
+                        }
                     }
                     return ;
                 }
@@ -124,5 +138,25 @@ public class MailItemPanel extends JPanel {
             }
             
         });
+    }
+    
+    
+    /**
+     * To set the mail which has read on gray color
+     */
+    public void setHasReadUI() {
+        this.replyLab.setForeground(Color.GRAY);
+        this.timeLab.setForeground(Color.GRAY);
+        this.subjectLab.setForeground(Color.GRAY);
+    }
+    
+    
+    /**
+     * To set the mail which was not read on black color
+     */
+    public void setUnReadUI() {
+        this.replyLab.setForeground(Color.BLACK);
+        this.timeLab.setForeground(Color.BLACK);
+        this.subjectLab.setForeground(Color.BLACK);
     }
 }

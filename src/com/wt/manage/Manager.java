@@ -1,5 +1,10 @@
 package com.wt.manage;
 
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
+import com.wt.utils.ConfigParser;
+
 
 /**
  * 
@@ -12,14 +17,57 @@ public class Manager {
     public static String password = null;
     private static boolean isLogin = false;
     
+    
+    /**
+     * To read user data from cookies
+     */
     public static void readData() {
-//        Manager.server = "10.0.2.4";
-//        Manager.username = "test1";
-//        Manager.password = "test1";
-//        Manager.isLogin = true;
+        ConfigParser parser = new ConfigParser("wt_mail.properties");
+        String dataPath = parser.getOption("data_path");
+        parser.closeFile();
+        
+        parser = new ConfigParser(dataPath);
+        if (!parser.getOption("server").equalsIgnoreCase("null"))
+            Manager.server = parser.getOption("server");
+        if (!parser.getOption("username").equalsIgnoreCase("null"))
+            Manager.username = parser.getOption("username");
+        if (!parser.getOption("password").equalsIgnoreCase("null"))
+            Manager.password = parser.getOption("password");
+        if (parser.getOption("isLogin").equalsIgnoreCase("true"))
+            Manager.isLogin = true;
+        else
+            Manager.isLogin = false;
+        parser.closeFile();
     }
     
+    
+    /**
+     * To write user data into cookies
+     */
     public static void writeData() {
+        ConfigParser parser = new ConfigParser("wt_mail.properties");
+        String dataPath = "data/cookies";
+        if (parser.getOption("data_path") != null)
+            dataPath = parser.getOption("data_path");
+        parser.closeFile();
+        
+        PrintWriter output = null;
+        try {
+            output = new PrintWriter(new FileOutputStream(dataPath), true);
+            output.println("server = " + Manager.server);
+            output.println("username = " + Manager.username);
+            output.println("password = " + Manager.password);
+            output.println("isLogin = " + Manager.isLogin);
+            output.flush();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        if (output != null) {
+            output.close();
+            output = null;
+        }
         
     }
     
@@ -76,7 +124,6 @@ public class Manager {
      * @return
      */
     public static boolean isLogin() {
-        Manager.readData();
         return Manager.isLogin;
     }
     

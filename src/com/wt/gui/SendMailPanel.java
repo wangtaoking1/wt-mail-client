@@ -195,6 +195,7 @@ public class SendMailPanel extends JPanel {
         buffer.append('\n');
         buffer.append(this.contentArea.getText());
         String[] tos = this.receiverField.getText().split(";");
+        
         for (String to : tos) {
             MailMessage message = new MailMessage();
             message.setUser(user);

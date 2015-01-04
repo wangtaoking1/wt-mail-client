@@ -11,6 +11,8 @@ public class ConfigParserTest {
         ConfigParser parser = new ConfigParser("wt_mail.properties");
         System.out.println("pop server: " + parser.getOption("pop_server"));
         System.out.println("pop port: " + parser.getOption("pop_port"));
+        
+        parser.closeFile();
     }
 
 }

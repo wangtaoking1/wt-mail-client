@@ -20,9 +20,14 @@ public class CommonClient {
     private int port;
     
     public CommonClient() {
-        ConfigParser parser = new ConfigParser("wt_mail.properties");
-        this.server = parser.getOption("manage_server");
-        this.port = Integer.parseInt(parser.getOption("manage_port"));
+//        ConfigParser parser = new ConfigParser("wt_mail.properties");
+//        this.server = parser.getOption("manage_server");
+//        this.port = Integer.parseInt(parser.getOption("manage_port"));
+//        
+//        parser.closeFile();
+        
+        this.server = Manager.server;
+        this.port = 5055;
         
         //Initial socket, input and output stream
         try {

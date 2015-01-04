@@ -205,6 +205,8 @@ public class SMTPClient {
         if (token != 354)
             throw new Exception("send 'data' command fail");
 
+        logger.debug(this.message.getContent());
+        
         this.sendData(this.message.getContent());
         this.sendData(".");
         token = this.getResultToken();

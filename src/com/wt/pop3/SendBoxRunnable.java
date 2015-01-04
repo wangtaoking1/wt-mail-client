@@ -40,11 +40,11 @@ public class SendBoxRunnable implements Runnable {
                 
                 if (this.checkUpdate()) {
                     this.boxPanel.updateMessageList(this.getMessageList());
-                    
-                    //update UI
-                    SwingUtilities.invokeAndWait(runx);
                 }
-
+                
+                //update UI
+                SwingUtilities.invokeAndWait(runx);
+                
                 Thread.sleep(10 * 1000);
             }
             catch (Exception e) {
