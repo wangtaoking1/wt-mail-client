@@ -21,14 +21,17 @@ public class BoxPanel extends JPanel {
     
     private ArrayList<MailMessage> messageList = null;
     
+    public static enum BoxType {RECEIVEBOX, SENDBOX};
     
+    private BoxType boxType;
     private MainFrame parent;
     private JPanel funcPanel, mainPanel;
     private JScrollPane scrollPane;
     private JButton delBut, retBut, transBut;
     
-    public BoxPanel(MainFrame frame) {
+    public BoxPanel(MainFrame frame, BoxType type) {
         super();
+        this.boxType = type;
         this.parent = frame;
         this.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         this.setLayout(new BorderLayout());
@@ -65,9 +68,15 @@ public class BoxPanel extends JPanel {
             MailItemPanel item = new MailItemPanel(BoxPanel.this);
             MailMessage message = this.messageList.get(i);
             
-            //TODO: debug
-            item.updateMails(message.getFrom(), message.getTime(), 
-                    message.getSubject());
+            if (this.boxType == BoxType.RECEIVEBOX) {
+                item.updateMails(message.getFrom(), message.getTime(), 
+                        message.getSubject());
+            }
+            else {
+                item.updateMails(message.getTo(), message.getTime(), 
+                        message.getSubject());
+            }
+                
             this.mainPanel.add(item);
         }
         this.removeAllFocus();
@@ -113,12 +122,10 @@ public class BoxPanel extends JPanel {
                     BoxPanel.this.mainPanel.remove(comps[cnt]);
                     BoxPanel.this.messageList.remove(cnt);
                     POPClient client = new POPClient();
-                    if (BoxPanel.this.parent.getCurrentPanel()
-                            .equals("receive")) {
+                    if (BoxPanel.this.boxType == BoxType.RECEIVEBOX) {
                         client.delReceiveMail(cnt + 1);
                     }
-                    if (BoxPanel.this.parent.getCurrentPanel()
-                            .equals("send")) {
+                    else {
                         client.delSendMail(cnt + 1);
                     }
                     BoxPanel.this.updateMessageUI();
@@ -198,5 +205,10 @@ public class BoxPanel extends JPanel {
         buffer.append("Subject: " + message.getSubject() + "\n\n");
         buffer.append(message.getContent());
         return buffer.toString();
+    }
+    
+    
+    public BoxType getBoxType() {
+        return this.boxType;
     }
 }

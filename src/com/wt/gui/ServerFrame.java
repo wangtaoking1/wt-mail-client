@@ -114,13 +114,13 @@ public class ServerFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 serverField.setText("");
                 dispose();
-            }
+             }
             
         });
     }
     
     private void setDefaultValue() {
-        if (Manager.server!= null) {
+        if (Manager.server != null) {
             this.serverField.setText(Manager.server);
         }
     }

@@ -15,13 +15,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+import com.wt.gui.BoxPanel.BoxType;
 import com.wt.utils.MailMessage;
 
 public class MailItemPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
     public BoxPanel parent;
-    private JLabel senderLab, timeLab, subjectLab;
+    private JLabel replyLab, timeLab, subjectLab;
     private JPanel upPanel, downPanel;
     
     public MailItemPanel(BoxPanel boxPanel) {
@@ -40,8 +41,8 @@ public class MailItemPanel extends JPanel {
         this.add(upPanel);
         this.add(downPanel);
         
-        senderLab = new JLabel("From: test0@qq.com");
-        upPanel.add(senderLab);
+        replyLab = new JLabel("From: test0@qq.com");
+        upPanel.add(replyLab);
         upPanel.add(Box.createHorizontalGlue());
         timeLab = new JLabel("2014-12-28 20:30:45");
         upPanel.add(timeLab);
@@ -62,8 +63,11 @@ public class MailItemPanel extends JPanel {
      * @param time
      * @param subject
      */
-    public void updateMails(String sender, String time, String subject) {
-        this.senderLab.setText(sender);
+    public void updateMails(String reply, String time, String subject) {
+        if (this.parent.getBoxType() == BoxType.RECEIVEBOX)
+            this.replyLab.setText("From: " + reply);
+        else
+            this.replyLab.setText("To: " + reply);
         this.timeLab.setText(time);
         this.subjectLab.setText(subject);
         

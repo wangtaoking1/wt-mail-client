@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import com.wt.gui.BoxPanel.BoxType;
 import com.wt.manage.Manager;
 import com.wt.pop3.ReceiveBoxRunnable;
 import com.wt.pop3.SendBoxRunnable;
@@ -61,8 +62,8 @@ public class MainFrame extends JFrame {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
         
-        receivePanel = new BoxPanel(this);
-        sendPanel = new BoxPanel(this);
+        receivePanel = new BoxPanel(this, BoxType.RECEIVEBOX);
+        sendPanel = new BoxPanel(this, BoxType.SENDBOX);
         mailPanel = new SendMailPanel();
         
         this.setDaemonThread();

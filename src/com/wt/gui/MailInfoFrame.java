@@ -46,9 +46,9 @@ public class MailInfoFrame extends JFrame {
         
         subjectLab = new JLabel(this.message.getSubject());
         subjectLab.setFont(new Font("微软雅黑", Font.BOLD, 18));
-        senderLab = new JLabel("发件人：" + this.message.getFrom());
-        timeLab = new JLabel("发送时间：" + this.message.getTime());
-        receiverLab = new JLabel("收件人：" + this.message.getTo());
+        senderLab = new JLabel("发件人: " + this.message.getFrom());
+        timeLab = new JLabel("发送时间: " + this.message.getTime());
+        receiverLab = new JLabel("收件人: " + this.message.getTo());
         upPanel.add(subjectLab);
         upPanel.add(senderLab);
         upPanel.add(timeLab);
