@@ -43,12 +43,12 @@ public class ReceiveBoxRunnable implements Runnable {
                     break;
                 
                 if (this.checkUpdate()) {
-                    this.boxPanel.updateMessageList(this.getMessageList());   
+                    this.boxPanel.updateMessageList(this.getMessageList());
+                    
+                    //update UI
+                    SwingUtilities.invokeAndWait(runx);
                 }
 
-                //update UI
-                SwingUtilities.invokeAndWait(runx);
-                
                 Thread.sleep(5 * 1000);
             }
             catch (Exception e) {
