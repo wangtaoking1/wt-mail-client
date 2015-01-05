@@ -26,6 +26,12 @@ import com.wt.smtp.SMTPRunnable;
 import com.wt.utils.MailMessage;
 import com.wt.utils.User;
 
+
+/**
+ * SendMailPanel is the send mail Panel
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class SendMailPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     
@@ -172,6 +178,7 @@ public class SendMailPanel extends JPanel {
         });
     }
     
+    
     private void clearContent() {
         this.receiverField.setText("");
         this.subjectField.setText("");
@@ -228,6 +235,10 @@ public class SendMailPanel extends JPanel {
     }
     
     
+    /**
+     * To set subject on GUI
+     * @param subject
+     */
     public void setSubject(String subject) {
         this.subjectField.setText(subject);
     }

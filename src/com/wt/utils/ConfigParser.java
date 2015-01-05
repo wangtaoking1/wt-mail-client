@@ -16,6 +16,7 @@ public class ConfigParser {
     private Properties prop = null;
     private FileInputStream inputStream = null;
 
+    
     public ConfigParser(String path) {
         prop = new Properties();
         try {
@@ -26,13 +27,16 @@ public class ConfigParser {
         }
     }
 
+    
     public String getOption(String key) {
         return this.prop.getProperty(key);
     }
 
+    
     public Set<Object> getKeys() {
         return this.prop.keySet();
     }
+    
     
     public void closeFile() {
         if (this.inputStream != null) {

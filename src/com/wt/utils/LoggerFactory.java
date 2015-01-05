@@ -8,7 +8,6 @@ import org.apache.log4j.*;
  * This is a class to get a logger
  * @author wangtao
  * @time 2014/11/13
- *
  */
 public class LoggerFactory {
     private static String logPath = "logs/mailserver.log";

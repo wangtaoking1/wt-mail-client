@@ -12,6 +12,11 @@ import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
 
 
+/**
+ * This is a thread to update receive box
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class ReceiveBoxRunnable implements Runnable {
     private Logger logger = LoggerFactory.getLogger(ReceiveBoxRunnable.class);
 
@@ -44,7 +49,7 @@ public class ReceiveBoxRunnable implements Runnable {
                 //update UI
                 SwingUtilities.invokeAndWait(runx);
                 
-                Thread.sleep(10 * 1000);
+                Thread.sleep(5 * 1000);
             }
             catch (Exception e) {
                 logger.error(e);

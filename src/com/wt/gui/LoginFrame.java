@@ -93,22 +93,7 @@ public class LoginFrame extends JFrame {
             public void keyPressed(KeyEvent arg0) {
                 // TODO Auto-generated method stub
                 if (arg0.getKeyCode() == arg0.VK_ENTER) {
-                    Manager.username = userField.getText();
-                    Manager.password = new String(passField.getPassword());
-                    
-                    if (Manager.auth(Manager.username, Manager.password)) {                       
-                        new MainFrame();
-                        dispose();
-                    }
-                    else {
-                        Toolkit.getDefaultToolkit().beep();
-                        JOptionPane.showMessageDialog(null, "Auth failed", "ERROR", 
-                                JOptionPane.ERROR_MESSAGE);
-                        Manager.username = null;
-                        Manager.password = null;
-                        userField.setText("");
-                        passField.setText("");
-                    }
+                    LoginFrame.this.login();
                 }
             }
 
@@ -130,23 +115,32 @@ public class LoginFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                Manager.username = userField.getText();
-                Manager.password = new String(passField.getPassword());
-                
-                if (Manager.auth(Manager.username, Manager.password)) {
-                    new MainFrame();
-                    dispose();
-                }
-                else {
-                    Toolkit.getDefaultToolkit().beep();
-                    JOptionPane.showMessageDialog(null, "Auth failed", "ERROR", 
-                            JOptionPane.ERROR_MESSAGE);
-                    Manager.username = null;
-                    Manager.password = null;
-                    userField.setText("");
-                    passField.setText("");
-                }
+                LoginFrame.this.login();
             }
+        });
+        
+        okBut.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                if (arg0.getKeyCode() != arg0.VK_ENTER)
+                    return ;
+                LoginFrame.this.login();
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
         });
         
         backBut.addActionListener(new ActionListener() {
@@ -180,6 +174,29 @@ public class LoginFrame extends JFrame {
         }
         if (Manager.password != null) {
             this.passField.setText(Manager.password);
+        }
+    }
+    
+    
+    /**
+     * To login according to GUI
+     */
+    private void login() {
+        Manager.username = userField.getText();
+        Manager.password = new String(passField.getPassword());
+        
+        if (Manager.auth(Manager.username, Manager.password)) {                       
+            new MainFrame();
+            dispose();
+        }
+        else {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Auth failed", "ERROR", 
+                    JOptionPane.ERROR_MESSAGE);
+            Manager.username = null;
+            Manager.password = null;
+            userField.setText("");
+            passField.setText("");
         }
     }
 }

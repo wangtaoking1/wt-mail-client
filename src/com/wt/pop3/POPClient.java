@@ -20,6 +20,7 @@ import com.wt.utils.ConfigParser;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
 
+
 /**
  * This is a pop client to pull message from server
  * @author wangtao

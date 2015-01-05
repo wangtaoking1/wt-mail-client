@@ -11,6 +11,11 @@ import com.wt.manage.Manager;
 import com.wt.utils.LoggerFactory;
 import com.wt.utils.MailMessage;
 
+/**
+ * This is a thread to update send box
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class SendBoxRunnable implements Runnable {
     private Logger logger = LoggerFactory.getLogger(SendBoxRunnable.class);
 
@@ -45,7 +50,7 @@ public class SendBoxRunnable implements Runnable {
                 //update UI
                 SwingUtilities.invokeAndWait(runx);
                 
-                Thread.sleep(10 * 1000);
+                Thread.sleep(5 * 1000);
             }
             catch (Exception e) {
                 logger.error(e);
@@ -55,6 +60,7 @@ public class SendBoxRunnable implements Runnable {
         
         logger.info("sendBoxThread dead");
     }
+    
     
     /**
      * To check whether or not need to update mails in send box

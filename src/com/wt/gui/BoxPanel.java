@@ -16,6 +16,7 @@ import javax.swing.border.EtchedBorder;
 import com.wt.pop3.POPClient;
 import com.wt.utils.MailMessage;
 
+
 /**
  * BoxPanel is the mail box Panel
  * @author wangtao
@@ -246,7 +247,7 @@ public class BoxPanel extends JPanel {
         buffer.append("-------------------------------------------------------"
                 + "-----------------------------------------------------------"
                 + "-----------------------------------------------------------"
-                + "----\n");
+                + "-\n");
         buffer.append("From: " + message.getFrom() + "\n");
         buffer.append("To: " + message.getTo() + "\n");
         buffer.append("Time: " + message.getTime() + "\n");

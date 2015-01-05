@@ -1,6 +1,7 @@
 package com.wt.utils;
 
 /**
+ * MailMessage is the mail message class
  * @author wangtao
  * @time 2014/11/12
  */

@@ -16,6 +16,12 @@ import javax.swing.JTextField;
 
 import com.wt.manage.Manager;
 
+
+/**
+ * ServerFrame is the frame to set server info
+ * @author wangtao
+ * @time 2014/12/25
+ */
 public class ServerFrame extends JFrame {
     private static final long serialVersionUID = 1L;
     
@@ -95,7 +101,6 @@ public class ServerFrame extends JFrame {
             
         });
         
-        
         okBut.addActionListener(new ActionListener() {
 
             @Override
@@ -107,6 +112,32 @@ public class ServerFrame extends JFrame {
             }
         });
         
+        okBut.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyPressed(KeyEvent arg0) {
+                // TODO Auto-generated method stub
+                if (arg0.getKeyCode() == arg0.VK_ENTER) {
+                    Manager.server = serverField.getText();
+                    
+                    new LoginFrame();
+                    dispose();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+        });
         
         cancelBut.addActionListener(new ActionListener() {
 
@@ -118,6 +149,7 @@ public class ServerFrame extends JFrame {
             
         });
     }
+    
     
     private void setDefaultValue() {
         if (Manager.server != null) {

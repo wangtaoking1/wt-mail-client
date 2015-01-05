@@ -7,7 +7,7 @@ import com.wt.utils.ConfigParser;
 
 
 /**
- * 
+ * Manager is to manage the user info and communicate with the manage service
  * @author wangtao
  * @time 2014/12/26
  */

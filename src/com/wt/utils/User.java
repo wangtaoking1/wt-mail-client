@@ -1,6 +1,7 @@
 package com.wt.utils;
 
 /**
+ * User is the user class
  * @author wangtao
  * @time 2014/11/15
  */

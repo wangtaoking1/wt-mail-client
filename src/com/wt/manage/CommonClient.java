@@ -10,6 +10,12 @@ import org.apache.log4j.Logger;
 import com.wt.utils.ConfigParser;
 import com.wt.utils.LoggerFactory;
 
+
+/**
+ * CommonClient is the client to manage service
+ * @author wangtao
+ * @time 2014/12/26
+ */
 public class CommonClient {
     private Logger logger = LoggerFactory.getLogger(CommonClient.class);
     
@@ -18,6 +24,7 @@ public class CommonClient {
     private PrintWriter output = null;
     private String server = null;
     private int port;
+    
     
     public CommonClient() {
 //        ConfigParser parser = new ConfigParser("wt_mail.properties");
@@ -63,6 +70,7 @@ public class CommonClient {
             return "";
         }
     }
+    
     
     /**
      * To close the socket

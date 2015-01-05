@@ -8,9 +8,11 @@ public class MailClient {
 
 	public static void main(String[] args) {
 	    if (!Manager.isLogin()) {
+	        //User has not login
 	        new ServerFrame();
 	    }
 	    else {
+	        //User has login
 	        new MainFrame();
 	    }
 	}

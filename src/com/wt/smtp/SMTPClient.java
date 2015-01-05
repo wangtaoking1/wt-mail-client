@@ -112,30 +112,35 @@ public class SMTPClient {
         } catch (Exception e) {
             logger.error(e);
             flag = false;
+            logger.info("Send the message from " + this.message.getFrom() 
+                    + " to " + this.message.getTo() + " failed");
         } finally {
             this.close();
         }
         return flag;
     }
 
+    
     /**
      * Initial the socket, input, output
      * @throws Exception
      */
     public void init() throws Exception {
-        logger.info("Connecting " + server + " ...");
+        logger.debug("Connecting " + server + " ...");
 
         socket = new Socket(server, port);
-        input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        input = new BufferedReader(new InputStreamReader(
+                socket.getInputStream()));
         output = new PrintWriter(socket.getOutputStream(), true);
 
         int token = getResultToken();
         if (token != 220) {
             throw new Exception("Connected " + server + " fail");
         }
-        logger.info("Connected " + server + " successfully");
+        logger.debug("Connected " + server + " successfully");
     }
 
+    
     /**
      * Register from the server
      * @throws IOException
@@ -147,9 +152,10 @@ public class SMTPClient {
         if (token != 250) {
             throw new Exception("say helo to the server fail");
         }
-        logger.info("say helo to the server successfully");
+        logger.debug("say helo to the server successfully");
     }
 
+    
     /**
      * Auth and login
      * @throws Exception
@@ -172,9 +178,10 @@ public class SMTPClient {
         if (token != 235)
             throw new Exception("login fail");
         
-        logger.info("login successfully");
+        logger.debug("login successfully");
     }
 
+    
     /**
      * Set the mail from and to
      * @throws Exception
@@ -192,9 +199,10 @@ public class SMTPClient {
         if (token != 250)
             throw new Exception("set envelop fail");
 
-        logger.info("set envelop successfully");
+        logger.debug("set envelop successfully");
     }
 
+    
     /**
      * Send the content of the mail message
      * @throws Exception
@@ -213,9 +221,10 @@ public class SMTPClient {
         if (token != 250)
             throw new Exception("send the body of message fail");
 
-        logger.info("send the message successfully");
+        logger.debug("send the message successfully");
     }
 
+    
     /**
      * Quit from the connection with the server
      * @throws Exception
@@ -228,10 +237,10 @@ public class SMTPClient {
         if (token != 221) {
             throw new Exception("quit fail");
         }
-        logger.info("quit successfully");
-
+        logger.debug("quit successfully");
     }
 
+    
     /**
      * Send message to server
      * @param data "the data needed to send to the server"
@@ -244,6 +253,7 @@ public class SMTPClient {
         logger.debug("Send '" + data + "' to the server successfully");
     }
 
+    
     /**
      *
      * @return "the token of the returned string"
