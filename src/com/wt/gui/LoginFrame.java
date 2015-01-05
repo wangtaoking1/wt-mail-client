@@ -92,7 +92,7 @@ public class LoginFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent arg0) {
                 // TODO Auto-generated method stub
-                if (arg0.getKeyCode() == arg0.VK_ENTER) {
+                if (arg0.getKeyCode() == arg0.VK_ENTER && checkBlank()) {
                     LoginFrame.this.login();
                 }
             }
@@ -115,7 +115,9 @@ public class LoginFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                LoginFrame.this.login();
+                if (checkBlank()) {
+                    LoginFrame.this.login();
+                }
             }
         });
         
@@ -126,7 +128,9 @@ public class LoginFrame extends JFrame {
                 // TODO Auto-generated method stub
                 if (arg0.getKeyCode() != arg0.VK_ENTER)
                     return ;
-                LoginFrame.this.login();
+                if (checkBlank()) {
+                    LoginFrame.this.login();
+                }
             }
 
             @Override
@@ -198,5 +202,23 @@ public class LoginFrame extends JFrame {
             userField.setText("");
             passField.setText("");
         }
+    }
+    
+    
+    /**
+     * To check whether or not there are blanks
+     * @return
+     */
+    private boolean checkBlank() {
+        String username = userField.getText();
+        String password = new String(passField.getPassword());
+        
+        if (username.equals("") || password.equals("")) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "No blanks", 
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 }

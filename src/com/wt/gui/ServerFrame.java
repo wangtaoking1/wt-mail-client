@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -79,7 +80,7 @@ public class ServerFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent arg0) {
                 // TODO Auto-generated method stub
-                if (arg0.getKeyCode() == arg0.VK_ENTER) {
+                if (arg0.getKeyCode() == arg0.VK_ENTER && checkBlank()) {
                     Manager.server = serverField.getText();
                     
                     new LoginFrame();
@@ -105,10 +106,12 @@ public class ServerFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                Manager.server = serverField.getText();
+                if (checkBlank()) {
+                    Manager.server = serverField.getText();
                 
-                new LoginFrame();
-                dispose();
+                    new LoginFrame();
+                    dispose();
+                }
             }
         });
         
@@ -117,7 +120,7 @@ public class ServerFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent arg0) {
                 // TODO Auto-generated method stub
-                if (arg0.getKeyCode() == arg0.VK_ENTER) {
+                if (arg0.getKeyCode() == arg0.VK_ENTER && checkBlank()) {
                     Manager.server = serverField.getText();
                     
                     new LoginFrame();
@@ -155,5 +158,22 @@ public class ServerFrame extends JFrame {
         if (Manager.server != null) {
             this.serverField.setText(Manager.server);
         }
+    }
+    
+    
+    /**
+     * To check whether or not there are blanks
+     * @return
+     */
+    private boolean checkBlank() {
+        String server = serverField.getText();
+        
+        if (server.equals("")) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "No blanks", 
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 }

@@ -57,7 +57,7 @@ public class RegFrame extends JFrame {
         passField = new JPasswordField(15);
         confirmField = new JPasswordField(15);
         okBut = new JButton("注册");
-        cancelBut = new JButton("取消");
+        cancelBut = new JButton("返回");
         
         
         this.setLayout(new GridLayout(4, 1));
@@ -101,7 +101,9 @@ public class RegFrame extends JFrame {
                 // TODO Auto-generated method stub
                 if (arg0.getKeyCode() != arg0.VK_ENTER)
                     return ;
-                RegFrame.this.register();
+                if (checkBlank()) {
+                    RegFrame.this.register();
+                }
             }
 
             @Override
@@ -122,7 +124,9 @@ public class RegFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                RegFrame.this.register();
+                if (checkBlank()) {
+                    RegFrame.this.register();
+                }
             }
         });
         
@@ -133,7 +137,9 @@ public class RegFrame extends JFrame {
                 // TODO Auto-generated method stub
                 if (arg0.getKeyCode() != arg0.VK_ENTER)
                     return ;
-                RegFrame.this.register();
+                if (checkBlank()) {
+                    RegFrame.this.register();
+                }
             }
 
             @Override
@@ -154,6 +160,7 @@ public class RegFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                new LoginFrame();
                 dispose();
             }
             
@@ -204,5 +211,25 @@ public class RegFrame extends JFrame {
                 confirmField.setText("");
             }
         }
+    }
+    
+    
+    /**
+     * To check whether or not there are blanks
+     * @return
+     */
+    private boolean checkBlank() {
+        String username = userField.getText();
+        String password = new String(passField.getPassword());
+        String confirm = new String(confirmField.getPassword());
+        
+        if (confirm.equals("") || username.equals("") 
+                || password.equals("")) {
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "No blanks", 
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 }
